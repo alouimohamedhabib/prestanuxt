@@ -11,6 +11,7 @@
     "nuxt": "^3.2.3"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.7",
     "pinia": "^2.0.33"
   }
 }

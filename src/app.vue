@@ -1,9 +1,8 @@
 <template>
-  <div>Lorem ipsum dolor sit.</div>
+  {{ product.product }}
 </template>
 
 <script setup lang="ts">
-import { useCounterStore } from "./store/counter";
-
-const counter = useCounterStore();
+import { useProductStore } from "./store/product";
+const product = useProductStore();
 </script>
