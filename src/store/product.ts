@@ -1,12 +1,13 @@
-import { defineStore } from "pinia";
+// stores/counter.js
+import { defineStore } from 'pinia'
 
 export const useProductStore = defineStore('product', {
     state: () => {
-        return {
-            product: []
-        }
+        return { product: 0 }
     },
-    actions: {},
-    getters: {
-    }
+    actions: {
+        increment() {
+            this.product++
+        },
+    },
 })
