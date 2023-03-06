@@ -1,9 +1,8 @@
 import { defineStore } from "pinia";
 
-export const useProductStore = defineStore('product', {
+export const useUserInterfaceStore = defineStore('userInterface', {
     state: () => {
         return {
-            product: []
         }
     },
     actions: {},
