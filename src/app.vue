@@ -1,8 +1,10 @@
 <template>
-  {{ product.product }}
+  <ul>
+    <li><NuxtLink to="/about">About</NuxtLink></li>
+    <li><NuxtLink to="/plp">Product list</NuxtLink></li>
+  </ul>
+  <p>app.vue</p>
+  <NuxtPage />
 </template>
 
-<script setup lang="ts">
-import { useProductStore } from "./store/product";
-const product = useProductStore();
-</script>
+<script setup lang="ts"></script>
