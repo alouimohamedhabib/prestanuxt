@@ -8,7 +8,11 @@
       <li><NuxtLink to="/cart">Cart</NuxtLink></li>
       <li><NuxtLink to="/checkout">Checkout</NuxtLink></li>
     </ul>
-    <slot />
+    <h1>
+      <i class="bi-alarm"></i>
+      <i class="bi bi-6-square"></i>
+    </h1>
+    <NuxtPage />
 
     <footer>
       <Footer />
