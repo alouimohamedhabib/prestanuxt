@@ -3,10 +3,14 @@ import { defineStore } from "pinia";
 export const useCartStore = defineStore('cart', {
     state: () => {
         return {
-            cart: []
+            cart: 0
         }
     },
-    actions: {},
+    actions: {
+        increment() {
+            this.cart = 123
+        },
+    },
     getters: {
     }
 })

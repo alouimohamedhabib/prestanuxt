@@ -1,1 +1,1 @@
-<template>Home NuxtPage</template>
+<template>index</template>

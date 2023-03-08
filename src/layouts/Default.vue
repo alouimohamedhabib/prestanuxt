@@ -1,19 +1,13 @@
 <template>
   <div>
-    <p>default NuxtLayout</p>
-    <ul>
-      <li><NuxtLink to="/">Home</NuxtLink></li>
-      <li><NuxtLink to="/plp">Product list</NuxtLink></li>
-      <li><NuxtLink to="/pdp">Product details</NuxtLink></li>
-      <li><NuxtLink to="/cart">Cart</NuxtLink></li>
-      <li><NuxtLink to="/checkout">Checkout</NuxtLink></li>
-    </ul>
-    <h1>
-      <i class="bi-alarm"></i>
-      <i class="bi bi-6-square"></i>
-    </h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <Header />
+        </div>
+      </div>
+    </div>
     <NuxtPage />
-
     <footer>
       <Footer />
     </footer>

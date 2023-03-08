@@ -1,7 +1,4 @@
 <template>
-  <p>
-    APP?VUE
-  </p>
   <NuxtLayout> </NuxtLayout>
 </template>
 
