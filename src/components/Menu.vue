@@ -37,13 +37,15 @@ const handleMenuTrigger = () => {
 </script>
 <style lang="scss" scoped>
 .menu {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255);
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
-  width: 100vw;
+  width: 70vw;
   transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  box-shadow: 1px 1px 40px 90px rgba(0, 0, 0, 0.05);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   .closer {
     display: flex;
     align-items: right;

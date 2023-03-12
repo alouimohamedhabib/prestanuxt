@@ -24,6 +24,13 @@ const defaultRoutes = [
         file: "@/pages/checkout.vue",
         name: "checkout"
     },
+    {
+        path: "/account",
+        file: "@/pages/Account.vue",
+        name: "account"
+    },
+
+
 
 
 ]
