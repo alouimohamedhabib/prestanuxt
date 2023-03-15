@@ -2,7 +2,7 @@
 
 <script setup lang="ts">
 import { usePageStore } from "../store";
-import PagesNamesEnum from "../types/pages";
+import PagesNamesEnum from "../types/pagesType";
 
 const pageStore = usePageStore();
 

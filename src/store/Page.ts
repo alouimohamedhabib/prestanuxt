@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import PagesNamesEnum from "../types/pages";
+import PagesNamesEnum from "../types/pagesType";
 
 export const usePageStore = defineStore('page', {
     state: () => {
@@ -16,6 +16,8 @@ export const usePageStore = defineStore('page', {
                     pageName
                 }
             })
+
+            this.homepage = data.value
         },
     },
     getters: {
