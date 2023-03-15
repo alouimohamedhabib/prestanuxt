@@ -1,4 +1,5 @@
 import defaultRoutes from "./src/config/routes"
+import dictionary from './src/config/dictionary.ts'
 const path = require('path')
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -17,7 +18,15 @@ export default defineNuxtConfig({
     srcDir: "./src",
     modules: [
         '@pinia/nuxt',
+        '@nuxtjs/i18n',
     ],
+    i18n: {
+        vueI18n: {
+            legacy: false,
+            locale: 'fr',
+            messages: dictionary
+        }
+    },
     'hooks': {
         'pages:extend'(routes) {
             defaultRoutes.forEach(route => routes.push(route))
