@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { BannerType } from "../types/ApiType";
 import PagesNamesEnum from "../types/pagesType";
 
 export const usePageStore = defineStore('page', {
@@ -17,9 +18,12 @@ export const usePageStore = defineStore('page', {
                 }
             })
 
-            this.homepage = data.value
+            this.homepage = data.value.psdata
         },
     },
     getters: {
+        getHomepageImages(state): BannerType | undefined {
+            return (state.homepage as any).banner
+        }
     }
 })

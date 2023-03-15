@@ -1,0 +1,1 @@
+<template>Search box</template>
