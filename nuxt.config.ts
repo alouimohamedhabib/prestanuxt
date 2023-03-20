@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     i18n: {
         vueI18n: {
             legacy: false,
-            locale: 'en',
+            locale: 'fr',
             messages: dictionary
         }
     },

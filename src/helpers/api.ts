@@ -1,24 +1,25 @@
 import { ParamsType } from "../types/ApiType";
+import { HTTPVerbsType } from "../types/HTTPVerbsType";
 import PagesNamesEnum from "../types/pagesType";
 
 export default class API {
     baseUrl: string | undefined = process.env.API_ENDPOINT
-    method: "GET" | "POST" = "GET"
+    method: HTTPVerbsType = "GET"
     endpoint: string = ""
     params: ParamsType | undefined
-    constructor(endpoint: string, params?: ParamsType) {
+    constructor(endpoint: string, params?: ParamsType, method?: HTTPVerbsType) {
         this.endpoint = endpoint
         this.params = params
+        if (method)
+            this.method = method
     }
     private async callEndppint(endpointUrl: string) {
         const data = await $fetch(endpointUrl);
         return data;
     }
 
-    async getPageDetails(pageType: PagesNamesEnum) {
-        // https://rest.binshops.com/rest/cart?djdj
-        const url = this.baseUrl + "bootstrap"
-
+    async getPageDetails() {
+        const url = this.baseUrl + this.endpoint
         const data = await this.callEndppint(url);
         return data
     }

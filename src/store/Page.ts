@@ -14,12 +14,12 @@ export const usePageStore = defineStore('page', {
         }
     },
     actions: {
-        async init(pageName: PagesNamesEnum) {
+        async init(pagePath: string) {
             // call server api
             const { data } = await useFetch("/api/page", {
                 method: "POST",
                 body: {
-                    pageName
+                    path: pagePath
                 }
             })
 

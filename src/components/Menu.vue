@@ -1,4 +1,5 @@
 <template>
+  {{ locale }}
   <div
     class="menu"
     :class="{
@@ -24,10 +25,19 @@
         <a>Link</a>
       </li>
     </ul>
-    <div class="ms-3 me-3">
-      <select class="form-select" v-model="locale">
-        <option value="en">en</option>
-        <option value="fr">fr</option>
+    <div class="ms-3 me-3" v-if="languages">
+      <select
+        class="form-select"
+        v-model="locale"
+        aria-label="Default select example"
+      >
+        <option
+          v-for="(language, index) in languages?.languages"
+          :key="index"
+          :value="language.iso_code"
+        >
+          {{ language.name }}
+        </option>
       </select>
     </div>
   </div>
@@ -35,14 +45,22 @@
 
 <script setup lang="ts">
 import { usePageStore, useUserInterfaceStore } from "@/store";
+import { Language, Languages } from "../types/PageType";
+import { useStorage } from "@vueuse/core";
 const { locale } = useI18n();
-const userInterface = useUserInterfaceStore();
+const userInterfaceStore = useUserInterfaceStore();
 const pageStore = usePageStore();
-const showMenu = computed(() => userInterface.getMenuState);
+
+const showMenu = computed(() => userInterfaceStore.getMenuState);
 const handleMenuTrigger = () => {
-  userInterface.toggleMenuState();
+  userInterfaceStore.toggleMenuState();
 };
-const languages = pageStore.getLanguages;
+watch(locale, (selectedLanguage) => {
+  console.log(selectedLanguage);
+
+  userInterfaceStore.setDefaultLanguage(selectedLanguage);
+});
+const languages: Languages | undefined = pageStore.getLanguages;
 </script>
 <style lang="scss" scoped>
 .menu {
