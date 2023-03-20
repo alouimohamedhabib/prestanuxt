@@ -19,11 +19,19 @@ export default defineNuxtConfig({
     modules: [
         '@pinia/nuxt',
         '@nuxtjs/i18n',
+        '@nuxtjs/google-fonts'
     ],
+    googleFonts: {
+        families: {
+            Poppins: {
+                wght: [400, 600]
+            }
+        }
+    },
     i18n: {
         vueI18n: {
             legacy: false,
-            locale: 'fr',
+            locale: 'en',
             messages: dictionary
         }
     },

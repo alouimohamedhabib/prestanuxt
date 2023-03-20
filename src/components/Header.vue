@@ -1,5 +1,5 @@
 <template>
-  <div id="header">
+  <div id="header" class="position-relative">
     <i @click="handleMenuTrigger" class="bi bi-list"></i>
     <Menu />
   </div>
@@ -14,6 +14,7 @@ const handleMenuTrigger = () => {
 </script>
 <style lang="scss" scoped>
 #header {
+  z-index: 10;
   i {
     cursor: pointer;
   }

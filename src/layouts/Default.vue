@@ -7,7 +7,9 @@
         </div>
       </div>
     </div>
-    <NuxtPage />
+    <div class="main">
+      <NuxtPage />
+    </div>
     <footer>
       <Footer />
     </footer>

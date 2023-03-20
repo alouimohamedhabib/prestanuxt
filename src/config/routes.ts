@@ -10,7 +10,7 @@ const defaultRoutes = [
         name: "productList"
     },
     {
-        path: "/pdp",
+        path: "/:category/:id-:name",
         file: "@/pages/pdp.vue",
         name: "productDetails"
     },

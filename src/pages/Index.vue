@@ -1,6 +1,7 @@
 <template>
   <Search />
   <Banner :images="imagesArray" />
+  <NewArrivals />
 </template>
 
 <script setup lang="ts">

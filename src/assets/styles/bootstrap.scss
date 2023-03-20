@@ -1,4 +1,4 @@
-@import "bootstrap/dist/css/bootstrap-grid.css";
+@import "bootstrap/dist/css/bootstrap.min.css";
 @import "bootstrap-icons/font/bootstrap-icons.css";
 html {
   display: block;
@@ -9,8 +9,7 @@ body {
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
-  color: var(--bs-body-color);
-  text-align: var(--bs-body-text-align);
+
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
@@ -23,8 +22,12 @@ body {
 .main {
   box-sizing: border-box;
   display: block;
+  padding-bottom: 4em;
 }
 
 a {
   color: grey;
+}
+img {
+  max-width: 100%;
 }

@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { BannerType } from "../types/ApiType";
 import PagesNamesEnum from "../types/pagesType";
+import { ProductType } from "../types/ProductType";
 
 export const usePageStore = defineStore('page', {
     state: () => {
@@ -24,6 +25,9 @@ export const usePageStore = defineStore('page', {
     getters: {
         getHomepageImages(state): BannerType | undefined {
             return (state.homepage as any).banner
+        },
+        getPageFeaturedProducts(state): ProductType[] | undefined {
+            return (state.homepage as any).featuredProductsList
         }
     }
 })
