@@ -24,16 +24,25 @@
         <a>Link</a>
       </li>
     </ul>
+    <div class="ms-3 me-3">
+      <select class="form-select" v-model="locale">
+        <option value="en">en</option>
+        <option value="fr">fr</option>
+      </select>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useUserInterfaceStore } from "@/store";
+import { usePageStore, useUserInterfaceStore } from "@/store";
+const { locale } = useI18n();
 const userInterface = useUserInterfaceStore();
+const pageStore = usePageStore();
 const showMenu = computed(() => userInterface.getMenuState);
 const handleMenuTrigger = () => {
   userInterface.toggleMenuState();
 };
+const languages = pageStore.getLanguages;
 </script>
 <style lang="scss" scoped>
 .menu {

@@ -1,12 +1,16 @@
 import { defineStore } from "pinia";
 import { BannerType } from "../types/ApiType";
 import PagesNamesEnum from "../types/pagesType";
+import { FeaturedProductsList, Languages, PageType } from "../types/PageType";
 import { ProductType } from "../types/ProductType";
+interface State {
+    homepage: PageType | undefined
+}
 
 export const usePageStore = defineStore('page', {
-    state: () => {
+    state: (): State => {
         return {
-            homepage: {}
+            homepage: undefined
         }
     },
     actions: {
@@ -24,10 +28,13 @@ export const usePageStore = defineStore('page', {
     },
     getters: {
         getHomepageImages(state): BannerType | undefined {
-            return (state.homepage as any).banner
+            return state.homepage?.banner
         },
-        getPageFeaturedProducts(state): ProductType[] | undefined {
-            return (state.homepage as any).featuredProductsList
+        getPageFeaturedProducts(state): FeaturedProductsList[] | undefined {
+            return state.homepage?.featuredProductsList
+        },
+        getLanguages(state): Languages | undefined {
+            return state.homepage?.languages
         }
     }
 })
