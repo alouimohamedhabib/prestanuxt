@@ -58,7 +58,7 @@ const handleMenuTrigger = () => {
 watch(locale, (selectedLanguage) => {
   console.log(selectedLanguage);
 
-  userInterfaceStore.setDefaultLanguage(selectedLanguage);
+  userInterfaceStore.updateDefaultLanguage(selectedLanguage);
 });
 const languages: Languages | undefined = pageStore.getLanguages;
 </script>
