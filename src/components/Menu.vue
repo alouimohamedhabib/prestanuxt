@@ -1,5 +1,4 @@
 <template>
-  {{ locale }}
   <div
     class="menu"
     :class="{
@@ -46,21 +45,27 @@
 <script setup lang="ts">
 import { usePageStore, useUserInterfaceStore } from "@/store";
 import { Language, Languages } from "../types/PageType";
-import { useStorage } from "@vueuse/core";
 const { locale } = useI18n();
 const userInterfaceStore = useUserInterfaceStore();
 const pageStore = usePageStore();
+const languages: Languages | undefined = pageStore.getLanguages;
+// watch the language changed
+watch(locale, (selectedLanguage: string) => {
+  // update the store userInterfaceStore
+  let selectedLanguageObject: Language | undefined = undefined;
+  languages?.languages.forEach((lang) => {
+    if (lang.iso_code === selectedLanguage) selectedLanguageObject = lang;
+  });
+  // call the store
+  userInterfaceStore.updateDefaultLanguage(
+    parseInt((selectedLanguageObject as unknown as Language)?.id_lang)
+  );
+});
 
 const showMenu = computed(() => userInterfaceStore.getMenuState);
 const handleMenuTrigger = () => {
   userInterfaceStore.toggleMenuState();
 };
-watch(locale, (selectedLanguage) => {
-  console.log(selectedLanguage);
-
-  userInterfaceStore.updateDefaultLanguage(selectedLanguage);
-});
-const languages: Languages | undefined = pageStore.getLanguages;
 </script>
 <style lang="scss" scoped>
 .menu {

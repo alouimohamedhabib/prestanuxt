@@ -11,4 +11,3 @@ const imagesArray = ["hahaha", "tatatat"];
 const pageStore = usePageStore();
 pageStore.init(bootstrapPath);
 </script>
-// homepahe ==> specific url => call api ==> data

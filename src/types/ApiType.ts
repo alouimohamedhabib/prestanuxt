@@ -1,4 +1,4 @@
-export type ParamsType = { [key: string]: string }
+export type ParamsType = { [key: string]: any }
 export type BannerType = {
     banner_desc: string
     banner_link: string

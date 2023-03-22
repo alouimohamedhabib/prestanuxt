@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import ApiFront from "../helpers/api.front";
 import { BannerType } from "../types/ApiType";
 import PagesNamesEnum from "../types/pagesType";
 import { FeaturedProductsList, Languages, PageType } from "../types/PageType";
@@ -16,14 +17,15 @@ export const usePageStore = defineStore('page', {
     actions: {
         async init(pagePath: string) {
             // call server api
-            const { data } = await useFetch("/api/page", {
+            const data = await ApiFront({
                 method: "POST",
+                path: pagePath,
                 body: {
-                    path: pagePath
+                    menu_with_images: "single"
                 }
             })
 
-            this.homepage = data.value.psdata
+            this.homepage = data.value?.psdata
         },
     },
     getters: {
