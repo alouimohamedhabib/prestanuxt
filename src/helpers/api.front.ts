@@ -8,8 +8,8 @@ export default async function ApiFront(params: ParamsType) {
     const { data, pending, refresh } = await useFetch("/api/page", {
         method: "POST",
         body: {
-            method,
             path,
+            method,
             params: { ...body, id_lang: currentLanguage }
         }
     })

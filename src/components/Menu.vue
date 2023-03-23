@@ -49,6 +49,12 @@ const { locale } = useI18n();
 const userInterfaceStore = useUserInterfaceStore();
 const pageStore = usePageStore();
 const languages: Languages | undefined = pageStore.getLanguages;
+const DefaultLanguageFromLocalStorage =
+  userInterfaceStore.getDefaultLanguageFromLocalStorage;
+if (DefaultLanguageFromLocalStorage !== undefined) {
+  console.log("=======", locale.value);
+  locale.value = DefaultLanguageFromLocalStorage;
+}
 // watch the language changed
 watch(locale, (selectedLanguage: string) => {
   // update the store userInterfaceStore
