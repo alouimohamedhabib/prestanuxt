@@ -30,7 +30,7 @@ export const useUserInterfaceStore = defineStore('userInterface', {
                 return localStorage.getItem('defaultLanguage')
             }
         },
-        get:() => {
+        get: () => {
             return "$"
         }
     }

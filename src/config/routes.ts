@@ -1,27 +1,27 @@
 const defaultRoutes = [
     {
         path: "/",
-        file: "@/pages/index.vue",
+        file: "@/pages/Index.vue",
         name: "index"
     },
     {
         path: "/plp",
-        file: "@/pages/plp.vue",
+        file: "@/pages/Plp.vue",
         name: "productList"
     },
     {
         path: "/:category/:id-:name",
-        file: "@/pages/pdp.vue",
+        file: "@/pages/Pdp.vue",
         name: "productDetails"
     },
     {
         path: "/cart",
-        file: "@/pages/cart.vue",
+        file: "@/pages/Cart.vue",
         name: "cart"
     },
     {
         path: "/checkout",
-        file: "@/pages/checkout.vue",
+        file: "@/pages/Checkout.vue",
         name: "checkout"
     },
     {
