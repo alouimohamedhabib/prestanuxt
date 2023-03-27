@@ -1,13 +1,13 @@
-
-
 import { defineStore } from "pinia";
 import { useLocalStorage } from '@vueuse/core'
+import { usePageStore } from "./Page";
+import { Language } from "../types/PageType";
 export const useUserInterfaceStore = defineStore('userInterface', {
     state: () => {
         return {
             count: useLocalStorage('count', 0),
             showMenu: false,
-            defaultLanguage: useLocalStorage("defaultLanguage", 123), // 1: english , 2: french
+            defaultLanguage: useLocalStorage("defaultLanguage", 123),
         }
     },
     actions: {
@@ -16,7 +16,6 @@ export const useUserInterfaceStore = defineStore('userInterface', {
         },
         updateDefaultLanguage(selectedLanguage: number) {
             this.defaultLanguage = selectedLanguage
-
         },
 
     },
@@ -26,12 +25,19 @@ export const useUserInterfaceStore = defineStore('userInterface', {
         getDefaultLanguage: (state) => state.defaultLanguage,
         getDefaultLanguageFromLocalStorage() {
             if (!process.server) {
-                console.log("->: :)ss  ===", localStorage.getItem('defaultLanguage'));
                 return localStorage.getItem('defaultLanguage')
             }
         },
-        get: () => {
-            return "$"
+        getlanguageById(state) {
+            const pageStore = usePageStore()
+            return (languageId: string) => {
+                let selectedLanguage: Language | undefined = undefined
+                pageStore.getLanguages?.languages.forEach((lang: Language) => {
+                    if (lang.id_lang === languageId.toString())
+                        selectedLanguage = lang
+                })
+                return selectedLanguage
+            }
         }
     }
 })

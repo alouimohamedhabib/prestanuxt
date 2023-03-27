@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import ApiFront from "../helpers/api.front";
 import { BannerType } from "../types/ApiType";
 import PagesNamesEnum from "../types/pagesType";
-import { FeaturedProductsList, Languages, PageType } from "../types/PageType";
+import { FeaturedProductsList, Language, Languages, PageType } from "../types/PageType";
 import { ProductType } from "../types/ProductType";
 interface State {
     homepage: PageType | undefined
