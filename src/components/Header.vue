@@ -14,7 +14,7 @@ const handleMenuTrigger = () => {
 </script>
 <style lang="scss" scoped>
 #header {
-  z-index: 10;
+  z-index: 15;
   i {
     cursor: pointer;
   }

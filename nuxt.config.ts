@@ -5,6 +5,11 @@ const path = require('path')
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    runtimeConfig: {
+        public: {
+            RESULT_PER_PAGE: process.env.RESULT_PER_PAGE
+        }
+    },
     css: [
         'assets/styles/bootstrap.scss'
     ],

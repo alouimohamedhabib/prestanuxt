@@ -7,7 +7,8 @@ export const useUserInterfaceStore = defineStore('userInterface', {
         return {
             count: useLocalStorage('count', 0),
             showMenu: false,
-            defaultLanguage: useLocalStorage("defaultLanguage", 123),
+            defaultLanguage: useLocalStorage("defaultLanguage", 1),
+            showSuggestionSpinner: false
         }
     },
     actions: {
@@ -17,6 +18,9 @@ export const useUserInterfaceStore = defineStore('userInterface', {
         updateDefaultLanguage(selectedLanguage: number) {
             this.defaultLanguage = selectedLanguage
         },
+        updateSuggestionSpinner(spinnerState: boolean) {
+            this.showSuggestionSpinner = spinnerState
+        }
 
     },
 
@@ -38,6 +42,9 @@ export const useUserInterfaceStore = defineStore('userInterface', {
                 })
                 return selectedLanguage
             }
+        },
+        getSuggestionSpinner(state): boolean {
+            return state.showSuggestionSpinner
         }
     }
 })

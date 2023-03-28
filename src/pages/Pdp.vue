@@ -1,1 +1,1 @@
-<template>pdp :)</template>
+<template>pdp :) {{ $t("newArrivals") }}</template>

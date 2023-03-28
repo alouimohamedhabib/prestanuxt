@@ -52,7 +52,7 @@ const languages: Languages | undefined = pageStore.getLanguages;
 const DefaultLanguageFromLocalStorage =
   userInterfaceStore.getDefaultLanguageFromLocalStorage;
 if (DefaultLanguageFromLocalStorage !== undefined) {
-  locale.value = DefaultLanguageFromLocalStorage;
+  locale.value = DefaultLanguageFromLocalStorage || "";
 }
 // watch the language changed
 watch(locale, (selectedLanguage: string) => {
