@@ -29,6 +29,11 @@ const defaultRoutes = [
         file: "@/pages/Account.vue",
         name: "account"
     },
+    {
+        path: "/search/:s",
+        file: "@/pages/SearchResult.vue",
+        name: "SearchResult"
+    },
 
 
 

@@ -1,7 +1,7 @@
 import { useUserInterfaceStore } from "../store";
-import { ParamsType } from "../types/ApiType";
+import { APIResponseType, ParamsType } from "../types/ApiType";
 //
-export default async function ApiFront(params: ParamsType) {
+export default async function ApiFront<T>(params: ParamsType) {
     const UIStore = useUserInterfaceStore()
     const currentLanguage = UIStore.getDefaultLanguage
     const { method, body, path } = params;
@@ -14,5 +14,5 @@ export default async function ApiFront(params: ParamsType) {
             params: { ...body, id_lang: currentLanguage }
         }
     })
-    return data;
+    return data as unknown as Ref<APIResponseType<T>>
 }

@@ -1,11 +1,11 @@
 <template>
   <ul class="list-group suggestions">
-    <div
+    <!-- <div
       class="list-group-item"
       v-if="getProductSearchSuggestion?.products.length === 0"
     >
       <i class="bi bi-cone-striped"></i> {{ $t("product.no_result") }}
-    </div>
+    </div> -->
     <NuxtLink
       :to="'/pdp'"
       v-for="(product, index) in getProductSearchSuggestion?.products"
@@ -61,6 +61,8 @@ const { getProductSearchSuggestion } = storeToRefs(productStore);
   z-index: 12;
   box-shadow: 5px 5px 14px rgba(0, 0, 0, 0.2);
   padding: 0;
+  max-height: 70vh;
+  overflow: scroll;
   &__productSuggestion {
     &--name {
       font-size: 1em;

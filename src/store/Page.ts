@@ -4,6 +4,7 @@ import { BannerType } from "../types/ApiType";
 import PagesNamesEnum from "../types/pagesType";
 import { FeaturedProductsList, Language, Languages, PageType } from "../types/PageType";
 import { ProductType } from "../types/ProductType";
+import { SuggestionsType } from "../types/SuggestionsType";
 interface State {
     homepage: PageType | undefined
 }
@@ -17,7 +18,7 @@ export const usePageStore = defineStore('page', {
     actions: {
         async init(pagePath: string) {
             // call server api
-            const data = await ApiFront({
+            const data = await ApiFront<PageType>({
                 method: "POST",
                 path: pagePath,
                 body: {

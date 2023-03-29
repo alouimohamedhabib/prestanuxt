@@ -1,5 +1,5 @@
 // stores/counter.js
-import { PropType } from 'nuxt/dist/app/compat/capi'
+
 import { defineStore } from 'pinia'
 import ApiFront from '../helpers/api.front'
 import { ParamsType } from '../types/ApiType'
@@ -9,23 +9,21 @@ import { useUserInterfaceStore } from './UserInterface'
 export const useProductStore = defineStore('product', {
     state: () => {
         return {
-            product: 0,
-            productSearchSuggestion: undefined
+            product: [],
+            productSearchSuggestion: null as unknown as SuggestionsType
         }
     },
     actions: {
-        increment() {
-            this.product++
-        },
         resetSuggestion() {
-            this.productSearchSuggestion = undefined
+            this.productSearchSuggestion = null as unknown as SuggestionsType
         },
+        // search for suggestion 
         async search(path: string, params: ParamsType) {
             const UIStore = useUserInterfaceStore()
             UIStore.updateSuggestionSpinner(true)
             this.resetSuggestion()
 
-            const data = await ApiFront({
+            const data = await ApiFront<SuggestionsType>({
                 method: "POST",
                 path,
                 body: {
@@ -35,11 +33,11 @@ export const useProductStore = defineStore('product', {
             console.log(data)
             UIStore.updateSuggestionSpinner(false)
             if (data.value.code === 200)
-                this.productSearchSuggestion = data.value?.psdata
+                this.productSearchSuggestion = data.value?.psdata || undefined
         }
     },
     getters: {
-        getProductSearchSuggestion: (state): SuggestionsType | undefined => {
+        getProductSearchSuggestion: (state): SuggestionsType => {
             return state.productSearchSuggestion
         }
     }

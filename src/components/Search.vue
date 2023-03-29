@@ -7,7 +7,7 @@
       :placeholder="$t('input.search.placeholder')"
     />
     <AtomsSpinner />
-    <button class="search--cta col-2">
+    <button class="search--cta col-2" @click="redirectToSearchResult">
       <i class="bi bi-search"></i>
     </button>
     <div class="col-10 position-relative">
@@ -34,6 +34,11 @@ watch(
     search();
   }
 );
+const redirectToSearchResult = () => {
+  productStore.resetSuggestion();
+  if (searchKeyword.value.length >= 3)
+    navigateTo(`/search/${searchKeyword.value}`);
+};
 const search = Debounce(() => {
   const keyword = searchKeyword.value;
   // call the store
