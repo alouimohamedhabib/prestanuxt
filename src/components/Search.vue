@@ -37,7 +37,7 @@ watch(
 const redirectToSearchResult = () => {
   productStore.resetSuggestion();
   if (searchKeyword.value.length >= 3)
-    navigateTo(`/search/${searchKeyword.value}`);
+    navigateTo(`/search/${searchKeyword.value}?order=product.position.asc`);
 };
 const search = Debounce(() => {
   const keyword = searchKeyword.value;

@@ -1,15 +1,16 @@
 <template>
   <div class="container search-result">
     <div class="row">
-      <div class="col-12">
-        <Search />
-      </div>
+      <div class="col-12"><Search /></div>
       <div class="col-12" v-if="searchProductsList?.products.length">
         <div class="row">
           <div class="col-12">
             <h1>
               {{ $t("product.result_for") }} <u>{{ params?.s }}</u>
             </h1>
+          </div>
+          <div class="col-8 offset-4 mt-2 mb-2">
+            <ProductsSort />
           </div>
           <div
             class="col-6"
@@ -43,8 +44,11 @@ import { useProductListStore } from "../store";
 
 const PLPStore = useProductListStore();
 const route = useRoute();
-const { params } = route;
-PLPStore.init(productSearch, { s: params.s });
+const { params, query } = route;
+PLPStore.init(productSearch, {
+  s: params.s,
+  order: query.order || "product.position.asc",
+});
 const searchProductsList = computed(() => PLPStore.getsearchProductsList);
 </script>
 
