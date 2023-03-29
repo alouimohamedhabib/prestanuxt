@@ -33,9 +33,9 @@
         <option
           v-for="(language, index) in languages?.languages"
           :key="index"
-          :value="language.iso_code"
+          :value="language.locale"
         >
-          {{ language.name }}
+          {{ language.name_simple }}
         </option>
       </select>
     </div>
@@ -59,11 +59,13 @@ watch(locale, (selectedLanguage: string) => {
   // update the store userInterfaceStore
   let selectedLanguageObject: Language | undefined = undefined;
   languages?.languages.forEach((lang) => {
-    if (lang.iso_code === selectedLanguage) selectedLanguageObject = lang;
+    if (lang.locale === selectedLanguage) {
+      selectedLanguageObject = lang;
+    }
   });
   // call the store
   userInterfaceStore.updateDefaultLanguage(
-    parseInt((selectedLanguageObject as unknown as Language)?.id_lang)
+    (selectedLanguageObject as unknown as Language)?.locale
   );
 });
 

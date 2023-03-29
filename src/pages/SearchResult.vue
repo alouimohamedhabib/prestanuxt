@@ -2,7 +2,7 @@
   <div class="container search-result">
     <div class="row">
       <div class="col-12"><Search /></div>
-      <div class="col-12" v-if="searchProductsList?.products.length">
+      <div class="col-12" v-if="searchProductsList?.products?.length">
         <div class="row">
           <div class="col-12">
             <h1>
@@ -25,7 +25,7 @@
     <div class="row">
       <div
         class="search-result--no-results col-12 text-center"
-        v-if="searchProductsList?.products.length === 0"
+        v-if="searchProductsList?.products?.length === 0"
       >
         <div>
           <i class="bi bi-cone-striped"></i>

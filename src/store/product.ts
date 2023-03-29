@@ -30,7 +30,6 @@ export const useProductStore = defineStore('product', {
                     ...params
                 }
             })
-            console.log(data)
             UIStore.updateSuggestionSpinner(false)
             if (data.value.code === 200)
                 this.productSearchSuggestion = data.value?.psdata || undefined

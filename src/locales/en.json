@@ -1,0 +1,14 @@
+{
+    "welcome": "Welcome",
+    "newArrivals": "New Arrivals",
+    "viewAll": "View All",
+    "product": {
+        "no_result": "No products found for",
+        "result_for": "Search results for "
+    },
+    "input": {
+        "search": {
+            "placeholder": "Search ..."
+        }
+    }
+}

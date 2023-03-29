@@ -34,7 +34,7 @@ defineProps({
 // men/1-1-hummingbird-printed-t-shirt.html
 function productUrl(product: ProductType | undefined) {
   if (!product) return "";
-  return `${product.category}/${product.id_product}-${product.link_rewrite}`;
+  return `/${product.category}/${product.id_product}-${product.link_rewrite}`;
 }
 </script>
 

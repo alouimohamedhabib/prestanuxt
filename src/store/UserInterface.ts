@@ -5,9 +5,8 @@ import { Language } from "../types/PageType";
 export const useUserInterfaceStore = defineStore('userInterface', {
     state: () => {
         return {
-            count: useLocalStorage('count', 0),
             showMenu: false,
-            defaultLanguage: useLocalStorage("defaultLanguage", 1),
+            defaultLanguage: useLocalStorage("defaultLanguage", ""),
             showSuggestionSpinner: false
         }
     },
@@ -15,7 +14,7 @@ export const useUserInterfaceStore = defineStore('userInterface', {
         toggleMenuState() {
             this.showMenu = !this.showMenu
         },
-        updateDefaultLanguage(selectedLanguage: number) {
+        updateDefaultLanguage(selectedLanguage: string) {
             this.defaultLanguage = selectedLanguage
         },
         updateSuggestionSpinner(spinnerState: boolean) {
@@ -32,12 +31,12 @@ export const useUserInterfaceStore = defineStore('userInterface', {
                 return localStorage.getItem('defaultLanguage')
             }
         },
-        getlanguageById(state) {
+        getlanguageById() {
             const pageStore = usePageStore()
             return (languageId: string) => {
                 let selectedLanguage: Language | undefined = undefined
                 pageStore.getLanguages?.languages.forEach((lang: Language) => {
-                    if (lang.id_lang === languageId.toString())
+                    if (lang.locale === languageId.toString())
                         selectedLanguage = lang
                 })
                 return selectedLanguage
