@@ -7,7 +7,9 @@
       <div class="col-12" v-if="searchProductsList?.products.length">
         <div class="row">
           <div class="col-12">
-            <h1>{{ params?.s }}</h1>
+            <h1>
+              {{ $t("product.result_for") }} <u>{{ params?.s }}</u>
+            </h1>
           </div>
           <div
             class="col-6"
