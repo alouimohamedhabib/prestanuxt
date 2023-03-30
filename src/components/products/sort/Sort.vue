@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { productSearch } from "~~/src/config/APIRoutes";
+import { productSearchPath } from "~~/src/config/APIRoutes";
 import { useProductListStore } from "~~/src/store";
 const route = useRoute();
 const router = useRouter();
@@ -26,7 +26,7 @@ watch(
   () => selectedSortFilter.value,
   () => {
     router.replace({ query: { order: selectedSortFilter.value } });
-    productListStore.init(productSearch, {
+    productListStore.init(productSearchPath, {
       s: params.s,
       order: selectedSortFilter.value,
     });

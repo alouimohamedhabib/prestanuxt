@@ -27,7 +27,7 @@
     <div class="ms-3 me-3" v-if="languages">
       <select
         class="form-select"
-        v-model="locale"
+        v-model="vLocale"
         aria-label="Default select example"
       >
         <option
@@ -45,17 +45,18 @@
 <script setup lang="ts">
 import { usePageStore, useUserInterfaceStore } from "@/store";
 import { Language, Languages } from "../types/PageType";
-const { locale } = useI18n();
+const { locale, setLocale } = useI18n();
+const vLocale = ref();
 const userInterfaceStore = useUserInterfaceStore();
 const pageStore = usePageStore();
 const languages: Languages | undefined = pageStore.getLanguages;
 const DefaultLanguageFromLocalStorage =
   userInterfaceStore.getDefaultLanguageFromLocalStorage;
 if (DefaultLanguageFromLocalStorage !== undefined) {
-  locale.value = DefaultLanguageFromLocalStorage || "";
+  vLocale.value = DefaultLanguageFromLocalStorage || "";
 }
 // watch the language changed
-watch(locale, (selectedLanguage: string) => {
+watch(vLocale, (selectedLanguage: string) => {
   // update the store userInterfaceStore
   let selectedLanguageObject: Language | undefined = undefined;
   languages?.languages.forEach((lang) => {
@@ -63,6 +64,7 @@ watch(locale, (selectedLanguage: string) => {
       selectedLanguageObject = lang;
     }
   });
+  setLocale(vLocale.value);
   // call the store
   userInterfaceStore.updateDefaultLanguage(
     (selectedLanguageObject as unknown as Language)?.locale

@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { productSearch } from "../config/APIRoutes";
+import { productSearchPath } from "../config/APIRoutes";
 import { useProductStore } from "../store";
 import Debounce from "../helpers/debounce";
 const searchKeyword: Ref<string> = ref("");
@@ -42,7 +42,7 @@ const redirectToSearchResult = () => {
 const search = Debounce(() => {
   const keyword = searchKeyword.value;
   // call the store
-  productStore.search(productSearch, {
+  productStore.search(productSearchPath, {
     s: keyword,
     resultsPerPage: config.public.RESULT_PER_PAGE,
   });

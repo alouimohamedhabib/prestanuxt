@@ -3,17 +3,29 @@
 import { defineStore } from 'pinia'
 import ApiFront from '../helpers/api.front'
 import { ParamsType } from '../types/ApiType'
+import { ProductType } from '../types/ProductType'
 import { SuggestionsType } from '../types/SuggestionsType'
 import { useUserInterfaceStore } from './UserInterface'
 
 export const useProductStore = defineStore('product', {
     state: () => {
         return {
-            product: [],
+            product: null as unknown as ProductType,
             productSearchSuggestion: null as unknown as SuggestionsType
         }
     },
     actions: {
+        async init(path: string, params: ParamsType) {
+            const data = await ApiFront<ProductType>({
+                method: "POST",
+                path,
+                body: {
+                    ...params
+                }
+            })
+            if (data.value.code === 200)
+                this.product = data.value?.psdata || undefined
+        },
         resetSuggestion() {
             this.productSearchSuggestion = null as unknown as SuggestionsType
         },

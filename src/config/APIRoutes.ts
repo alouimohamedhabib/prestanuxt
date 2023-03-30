@@ -1,3 +1,3 @@
 export const bootstrapPath = "bootstrap"
-export const productDetailsPath = "product"
-export const productSearch = "productSearch"
+export const productSearchPath = "productSearch"
+export const productdetailPath = "productdetail"

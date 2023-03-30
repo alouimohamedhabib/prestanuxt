@@ -5,19 +5,12 @@ export default defineNuxtPlugin(({ $pinia }) => {
 })
 
 async function piniaLocalStoragePlugin(context: PiniaPluginContext) {
-    // console.log(context)
     if (context.store.$id === "userInterface") {
-
-        // hydrate the store
         if (process.client) {
             const defaultPreselectedLanguage = localStorage.getItem('defaultLanguage') || undefined
             if (defaultPreselectedLanguage)
                 context.store.$state.defaultLanguage = defaultPreselectedLanguage;
-
-
         }
-
-
         let defaultSelectedLanguage = undefined;
         context.store.$subscribe((event: SubscriptionCallbackMutation<StateTree>) => {
             if ((event.events as any).key === 'defaultLanguage') {

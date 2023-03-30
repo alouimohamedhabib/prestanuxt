@@ -39,13 +39,13 @@
 </template>
 
 <script lang="ts" setup>
-import { productSearch } from "../config/APIRoutes";
+import { productSearchPath } from "../config/APIRoutes";
 import { useProductListStore } from "../store";
 
 const PLPStore = useProductListStore();
 const route = useRoute();
 const { params, query } = route;
-PLPStore.init(productSearch, {
+PLPStore.init(productSearchPath, {
   s: params.s,
   order: query.order || "product.position.asc",
 });

@@ -37,7 +37,6 @@ export default defineNuxtConfig({
         }
     },
     i18n: {
-
         defaultLocale: 'fr-FR',
         strategy: 'no_prefix',
         langDir: './locales/',
@@ -61,24 +60,6 @@ export default defineNuxtConfig({
             // locale: ' ',
             fallbackLocale: 'en-US',
         },
-
-
-
-        //     detectBrowserLanguage: false,
-        //     strategy: 'no_prefix',
-        //     // only load currently used locale on page load
-        //     lazy: true,
-        //     // langDir: './locales/',
-        //     locales: [
-        //         { code: 'fr', file: `fr-FR.json` },
-        //         { code: 'en', file: `en-US.json` },
-        //     ],
-        //     defaultLocale: 'en',
-        //     vueI18n: {
-        //         legacy: false,
-        //         locale: 'en',
-        //         fallbackLocale: 'en',
-        //     },
     },
     'hooks': {
         'pages:extend'(routes) {
