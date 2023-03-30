@@ -27,7 +27,8 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         '@pinia/nuxt',
         '@nuxtjs/i18n',
-        '@nuxtjs/google-fonts'
+        '@nuxtjs/google-fonts',
+        'nuxt-swiper'
     ],
     googleFonts: {
         families: {

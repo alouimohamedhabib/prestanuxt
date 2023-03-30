@@ -4161,6 +4161,14 @@ nuxi@3.2.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
+nuxt-swiper@latest:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/nuxt-swiper/-/nuxt-swiper-1.0.1.tgz#ecc414587d5f3126e94dcff3bb936c05861657ab"
+  integrity sha512-NHrPnnxJtM9asKkvxJlyKUhgO/1o3p4ghX+j6xAq1+A2qm8C7l/7WntklQf5t3H7Y7OZXS9e763MXgrCrnZOww==
+  dependencies:
+    "@nuxt/kit" "^3.2.3"
+    swiper "^9.1.0"
+
 nuxt@3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-3.2.0.tgz#d952f8d2c2776a74656b80cc72a6533b56c0ad6c"
@@ -5149,6 +5157,11 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.13.tgz#7189a474c46f8d47c7b0da4b987bb45e908bd2d5"
   integrity sha512-XkD+zwiqXHikFZm4AX/7JSCXA98U5Db4AFd5XUg/+9UNtnH75+Z9KxtpYiJZx36mUDVOwH83pl7yvCer6ewM3w==
 
+ssr-window@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-4.0.2.tgz#dc6b3ee37be86ac0e3ddc60030f7b3bc9b8553be"
+  integrity sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==
+
 ssri@^8.0.0, ssri@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/ssri/-/ssri-8.0.1.tgz#638e4e439e2ffbd2cd289776d5ca457c4f51a2af"
@@ -5306,6 +5319,13 @@ svgo@^2.7.0:
     csso "^4.2.0"
     picocolors "^1.0.0"
     stable "^0.1.8"
+
+swiper@^9.1.0:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-9.1.1.tgz#8e8d49a3667d9ef8997cddb023d913c422e72142"
+  integrity sha512-D1zArOwI6XCXCYBULPA4jTxpqp5SQtvntjinbXNZwXzj6P3KS51zSWuMarCLXq5oRISay4nX+TuShpxz8qhtbw==
+  dependencies:
+    ssr-window "^4.0.2"
 
 tapable@^1.0.0:
   version "1.1.3"

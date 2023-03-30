@@ -48,6 +48,9 @@ export const useProductStore = defineStore('product', {
         }
     },
     getters: {
+        getProductDetails(state): ProductType {
+            return state.product
+        },
         getProductSearchSuggestion: (state): SuggestionsType => {
             return state.productSearchSuggestion
         }
