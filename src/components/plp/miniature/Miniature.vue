@@ -22,19 +22,20 @@
 
 <script setup lang="ts">
 import { PropType } from "nuxt/dist/app/compat/capi";
-import { ProductType } from "~~/src/types/ProductType";
+import { FeaturedProductType } from "~~/src/types/FeaturedProductType";
+import { ProductType } from "../../../types/ProductType";
 
 // get product details
 defineProps({
   product: {
-    type: Object as PropType<ProductType>,
+    type: Object as PropType<FeaturedProductType>,
   },
 });
 
 // men/1-1-hummingbird-printed-t-shirt.html
-function productUrl(product: ProductType | undefined) {
+function productUrl(product: FeaturedProductType | undefined) {
   if (!product) return "";
-  return `/${product.category}/${product.id_product}-${product.link_rewrite}`;
+  return `/${product.category_name}/${product.id_product}-${product.link_rewrite}`;
 }
 </script>
 

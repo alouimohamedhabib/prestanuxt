@@ -17,7 +17,7 @@
             v-for="(product, index) in searchProductsList.products"
             :key="index"
           >
-            <ProductsThumbnailsThumbnail :product="product" />
+            <PlpMiniature :product="product" />
           </div>
         </div>
       </div>

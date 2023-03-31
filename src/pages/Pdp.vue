@@ -1,36 +1,11 @@
 <template>
   <div v-if="productDetails">
-    <Swiper
-      v-if="productDetails.images.length > 0"
-      :modules="[
-        SwiperAutoplay,
-        SwiperEffectCreative,
-        SwiperPagination,
-        SwiperNavigation,
-      ]"
-      :pagination="true"
-      :navigation="true"
-      :slides-per-view="1"
-      :loop="true"
-      :effect="'creative'"
-      :autoplay="{
-        delay: 8000,
-        disableOnInteraction: true,
-      }"
-      :creative-effect="{
-        prev: {
-          shadow: false,
-          translate: ['-20%', 0, -1],
-        },
-        next: {
-          translate: ['100%', 0, 0],
-        },
-      }"
-    >
-      <SwiperSlide v-for="(slide, index) in productDetails.images" :key="index">
-        <img :src="slide.src" :alt="productDetails.description_short" />
-      </SwiperSlide>
-    </Swiper>
+    <PdpThumbnail
+      v-if="productDetails.images.length > 1"
+      :product-images="productDetails.images"
+      :description_short="productDetails.description_short"
+    />
+    <PdpBuyboxBuyBox />
   </div>
 </template>
 <script lang="ts" setup>

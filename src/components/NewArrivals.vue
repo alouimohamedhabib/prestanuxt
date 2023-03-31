@@ -16,7 +16,7 @@
           v-for="(productItem, index) in newArrivalsProducts"
           :key="index"
         >
-          <ProductsThumbnailsThumbnail :product="productItem" class="col-6" />
+          <PlpMiniature :product="productItem" class="col-6" />
         </template>
       </div>
     </div>
@@ -28,5 +28,5 @@ import { usePageStore } from "../store";
 
 const pageStore = usePageStore();
 // get new products
-const newArrivalsProducts = pageStore.getPageFeaturedProducts;
+const newArrivalsProducts = computed(() => pageStore.getPageFeaturedProducts);
 </script>
