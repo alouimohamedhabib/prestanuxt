@@ -9,7 +9,6 @@
     <div class="closer">
       <i @click="handleMenuTrigger" class="bi bi-x-circle"></i>
     </div>
-
     <ul>
       <li>
         <a>Link</a>
@@ -49,17 +48,20 @@ const { locale, setLocale } = useI18n();
 const vLocale = ref();
 const userInterfaceStore = useUserInterfaceStore();
 const pageStore = usePageStore();
-const languages: Languages | undefined = pageStore.getLanguages;
-const DefaultLanguageFromLocalStorage =
-  userInterfaceStore.getDefaultLanguageFromLocalStorage;
+const languages: Ref<Languages | undefined> = computed(
+  () => pageStore.getLanguages
+);
+const DefaultLanguageFromLocalStorage = computed(
+  () => userInterfaceStore.getDefaultLanguageFromLocalStorage
+);
 if (DefaultLanguageFromLocalStorage !== undefined) {
-  vLocale.value = DefaultLanguageFromLocalStorage || "";
+  vLocale.value = DefaultLanguageFromLocalStorage.value || "";
 }
 // watch the language changed
 watch(vLocale, (selectedLanguage: string) => {
   // update the store userInterfaceStore
   let selectedLanguageObject: Language | undefined = undefined;
-  languages?.languages.forEach((lang) => {
+  languages.value?.languages.forEach((lang) => {
     if (lang.locale === selectedLanguage) {
       selectedLanguageObject = lang;
     }

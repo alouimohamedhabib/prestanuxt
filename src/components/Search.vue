@@ -11,7 +11,7 @@
       <i class="bi bi-search"></i>
     </button>
     <div class="col-10 position-relative">
-      <ProductsSuggestions />
+      <PlpSuggestions />
     </div>
   </div>
 </template>

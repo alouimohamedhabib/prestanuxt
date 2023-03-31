@@ -4,9 +4,19 @@
     <input type="number" v-model="quantityControl" />
     <span class="plus" @click="controlQuantity('+')">+</span>
   </div>
+  <div class="stock-status">
+    {{
+      available_for_order === "1"
+        ? $t("product.available_in_stock")
+        : $t("product.not_available_in_stock")
+    }}
+  </div>
 </template>
 
 <script lang="ts" setup>
+const emit = defineEmits<{
+  (e: "quantityUpdate", qty: number): void;
+}>();
 const props = defineProps({
   quantity: Number,
   minimal_quantity: String,
@@ -31,6 +41,8 @@ const controlQuantity = (action: string) => {
     if (parseInt(minimal_quantity?.value || "0") <= quantityControl.value - 1)
       quantityControl.value--;
   }
+
+  emit("quantityUpdate", quantityControl.value);
 };
 </script>
 <style lang="css" scoped>
@@ -45,6 +57,7 @@ span {
   width: 90px;
   float: right;
   border-radius: 20px;
+  margin-bottom: 10px;
 }
 .minus,
 .plus {
@@ -68,5 +81,9 @@ input {
   display: inline-block;
   vertical-align: middle;
   outline: none;
+}
+.stock-status {
+  font-size: 12px;
+  font-weight: bold;
 }
 </style>

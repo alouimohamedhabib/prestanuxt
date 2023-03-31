@@ -10,7 +10,7 @@
             </h1>
           </div>
           <div class="col-8 offset-4 mt-2 mb-2">
-            <ProductsSort />
+            <PlpSort />
           </div>
           <div
             class="col-6"

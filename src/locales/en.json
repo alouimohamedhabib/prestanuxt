@@ -2,9 +2,12 @@
     "welcome": "Welcome",
     "newArrivals": "New Arrivals",
     "viewAll": "View All",
+    "size": "size",
     "product": {
         "no_result": "No products found for",
-        "result_for": "Search results for "
+        "result_for": "Search results for ",
+        "available_in_stock": "Avaliable in stok",
+        "not_available_in_stock": "Not avaliable in stok "
     },
     "input": {
         "search": {
