@@ -6,8 +6,8 @@
     "product": {
         "no_result": "No products found for",
         "result_for": "Search results for ",
-        "available_in_stock": "Avaliable in stok",
-        "not_available_in_stock": "Not avaliable in stok "
+        "available_in_stock": "Avaliable in stock",
+        "not_available_in_stock": "Not avaliable in stock "
     },
     "input": {
         "search": {

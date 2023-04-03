@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-3 product">
     <div class="row">
+      <!-- producty info and quantity control -->
       <div class="col-8">
         <h1>{{ productDetails.name }}</h1>
       </div>
@@ -12,6 +13,10 @@
           :available_for_order="productDetails.available_for_order"
           :allow_out_of_stock="productDetails.allow_out_of_stock"
         />
+      </div>
+      <!-- productOptions -->
+      <div class="col-12">
+        <PdpBuyboxProductOptions :options="productDetails.options" />
       </div>
     </div>
   </div>

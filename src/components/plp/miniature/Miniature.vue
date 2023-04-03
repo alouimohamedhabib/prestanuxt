@@ -39,7 +39,7 @@ function productUrl(product: FeaturedProductType | undefined) {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .product {
   line-height: 1.2em;
   font-family: Poppins;

@@ -1,7 +1,6 @@
 <template>
   <div v-if="productDetails">
     <PdpThumbnail
-      v-if="productDetails.images.length > 1"
       :product-images="productDetails.images"
       :description_short="productDetails.description_short"
     />
