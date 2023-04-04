@@ -1,11 +1,16 @@
 <template>
   <div class="product-options">
     <div class="row">
-      <div class="col-10" v-if="sizes?.items">
+      <div class="col-10" v-if="sizes && sizes[0]?.items">
         <div class="product-options--size">
           <h3>{{ $t("size") }}</h3>
-          <div class="product-options--size__list mt-4">
-            <template v-for="(size, index) in sizes?.items" :key="index">
+          <div
+            class="product-options--size__list mt-4"
+            :class="{
+              dimension: sizes[0].title?.toLocaleLowerCase() === 'dimension',
+            }"
+          >
+            <template v-for="(size, index) in sizes[0]?.items" :key="index">
               <button
                 @click="handleSizeSelection(size.id)"
                 class="product-options--size__list__button me-3"
@@ -17,10 +22,10 @@
           </div>
         </div>
       </div>
-      <div class="col-2" v-if="colors?.items">
+      <div class="col-2" v-if="colors && colors[0]?.items">
         <div class="product-options--colors">
           <div class="product-options--colors__list">
-            <template v-for="(color, index) in colors?.items" :key="index">
+            <template v-for="(color, index) in colors[0]?.items" :key="index">
               <button
                 @click="handleColorSelection(color.id)"
                 class="product-options--colors__list__button"
@@ -39,18 +44,18 @@
 
 <script setup lang="ts">
 import { PropType } from "nuxt/dist/app/compat/capi";
+import { useProductStore } from "~~/src/store";
 import { Option } from "~~/src/types/ProductType";
+const PDPStore = useProductStore();
 const currentSizeSelection: Ref<number> = ref(NaN);
 const currentColorSelection: Ref<number> = ref(NaN);
-const props = defineProps({
-  options: [] as PropType<Option[]>,
-});
-const colors: Ref<Option | undefined> = ref();
-const sizes: Ref<Option | undefined> = ref();
-props.options?.forEach((item: Option) => {
-  if (item.is_color_option === 1) colors.value = item;
-  else sizes.value = item;
-});
+const options = computed(() => PDPStore.getProductOptions);
+const colors: ComputedRef<Option[] | undefined> = computed(() =>
+  options.value.filter((item) => item.is_color_option == 1)
+);
+const sizes: ComputedRef<Option[] | undefined> = computed(() =>
+  options.value.filter((item) => item.is_color_option != 1)
+);
 
 const handleSizeSelection = (sizeId: number) => {
   currentSizeSelection.value = sizeId;
@@ -68,7 +73,15 @@ const handleColorSelection = (sizeId: number) => {
       font-weight: bold;
     }
     &__list {
+      &.dimension {
+        button {
+          font-size: 10px;
+          height: 60px;
+          width: 60px;
+        }
+      }
       &__button {
+        text-align: center;
         display: inline-block;
         border-radius: 100%;
         height: 40px;
@@ -76,6 +89,7 @@ const handleColorSelection = (sizeId: number) => {
         border: 1px solid #dddddd;
         color: #888888;
         background: transparent;
+
         &.active {
           background: #000000;
           color: #ffffff;

@@ -3,11 +3,13 @@
     "newArrivals": "Nouveautés",
     "viewAll": "Voir tout",
     "size": "taille",
+    "description": "Description",
     "product": {
         "no_result": "Pas de produits trouvés pour",
         "result_for": "Résulat de recherche pour ",
         "available_in_stock": "Disponible a l'achat",
-        "not_available_in_stock": "Non disponible a l'achat"
+        "not_available_in_stock": "Non disponible a l'achat",
+        "total_price": "Prix total"
     },
     "input": {
         "search": {

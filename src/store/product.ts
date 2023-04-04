@@ -3,7 +3,7 @@
 import { defineStore } from 'pinia'
 import ApiFront from '../helpers/api.front'
 import { ParamsType } from '../types/ApiType'
-import { ProductType } from '../types/ProductType'
+import { Option, ProductType } from '../types/ProductType'
 import { SuggestionsType } from '../types/SuggestionsType'
 import { useUserInterfaceStore } from './UserInterface'
 
@@ -53,6 +53,9 @@ export const useProductStore = defineStore('product', {
         },
         getProductSearchSuggestion: (state): SuggestionsType => {
             return state.productSearchSuggestion
+        },
+        getProductOptions: (state): Option[] => {
+            return state.product.options
         }
     }
 })

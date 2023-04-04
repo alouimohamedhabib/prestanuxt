@@ -16,7 +16,26 @@
       </div>
       <!-- productOptions -->
       <div class="col-12">
-        <PdpBuyboxProductOptions :options="productDetails.options" />
+        <PdpBuyboxProductOptions />
+      </div>
+      <!-- product description -->
+      <div class="col-12 product--description">
+        <h3>
+          {{ $t("description") }}
+        </h3>
+        <p v-html="productDetails.description"></p>
+      </div>
+      <!-- product price && add to cart -->
+      <div class="col-12">
+        <div class="row">
+          <div class="col-6 product--price">
+            <span>{{ $t("product.total_price") }}</span>
+            <p>
+              {{ ProductPrice(productDetails) }}
+            </p>
+          </div>
+          <div class="col-6"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -24,18 +43,36 @@
 
 <script setup lang="ts">
 import { useProductStore } from "~~/src/store";
+import ProductPrice from "../../../helpers/ProductPrice";
 const PDPStore = useProductStore();
-const productDetails = PDPStore.getProductDetails;
+const productDetails = computed(() => PDPStore.getProductDetails);
 const qty: Ref<number> = ref(0);
 const quantityUpdateInterceptor = (quantitySelection: number) => {
-  console.log(quantitySelection);
   qty.value = quantitySelection;
 };
 </script>
 
 <style lang="scss" scoped>
 .product {
-  --options {
+  &--description {
+    margin-top: 2em;
+    font-size: 11px;
+    h3 {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+  &--price {
+    span {
+      font-size: 9px;
+      display: block;
+    }
+    p {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+  &--options {
     &__size {
     }
     &__colors {
