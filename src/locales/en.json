@@ -9,7 +9,8 @@
         "result_for": "Search results for ",
         "available_in_stock": "Avaliable in stock",
         "not_available_in_stock": "Not avaliable in stock ",
-        "total_price": "Total price"
+        "total_price": "Total price",
+        "add_to_cart": "Add to cart"
     },
     "input": {
         "search": {

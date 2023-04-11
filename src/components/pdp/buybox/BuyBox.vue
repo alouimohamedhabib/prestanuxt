@@ -28,13 +28,15 @@
       <!-- product price && add to cart -->
       <div class="col-12">
         <div class="row">
-          <div class="col-6 product--price">
+          <div class="col-4 product--price">
             <span>{{ $t("product.total_price") }}</span>
             <p>
               {{ ProductPrice(productDetails) }}
             </p>
           </div>
-          <div class="col-6"></div>
+          <div class="col-8 text-end">
+            <PdpBuyboxAddToCart :qty="qty" />
+          </div>
         </div>
       </div>
     </div>
@@ -44,9 +46,13 @@
 <script setup lang="ts">
 import { useProductStore } from "~~/src/store";
 import ProductPrice from "../../../helpers/ProductPrice";
+
+
 const PDPStore = useProductStore();
 const productDetails = computed(() => PDPStore.getProductDetails);
-const qty: Ref<number> = ref(0);
+const qty: Ref<number> = ref(
+  parseInt(productDetails.value.minimal_quantity) || 0
+);
 const quantityUpdateInterceptor = (quantitySelection: number) => {
   qty.value = quantitySelection;
 };

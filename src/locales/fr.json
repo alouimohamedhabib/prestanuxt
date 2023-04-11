@@ -9,7 +9,8 @@
         "result_for": "Résulat de recherche pour ",
         "available_in_stock": "Disponible a l'achat",
         "not_available_in_stock": "Non disponible a l'achat",
-        "total_price": "Prix total"
+        "total_price": "Prix total",
+        "add_to_cart": "Ajouter au panier"
     },
     "input": {
         "search": {

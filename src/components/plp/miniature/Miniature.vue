@@ -9,7 +9,7 @@
       />
     </NuxtLink>
     <h2 class="product--name">
-      {{ product?.name }}
+      {{ product?.name }} ÷÷ {{ product?.category_name }}
     </h2>
     <h3 class="product--category">
       {{ product?.category_name }}
@@ -35,7 +35,7 @@ defineProps({
 // men/1-1-hummingbird-printed-t-shirt.html
 function productUrl(product: FeaturedProductType | undefined) {
   if (!product) return "";
-  return `/${product.category_name}/${product.id_product}-${product.link_rewrite}`;
+  return `/${product.category}/${product.id_product}-${product.link_rewrite}`;
 }
 </script>
 

@@ -3,7 +3,7 @@
 import { defineStore } from 'pinia'
 import ApiFront from '../helpers/api.front'
 import { ParamsType } from '../types/ApiType'
-import { Option, ProductType } from '../types/ProductType'
+import { Combination, Option, ProductType } from '../types/ProductType'
 import { SuggestionsType } from '../types/SuggestionsType'
 import { useUserInterfaceStore } from './UserInterface'
 
@@ -11,7 +11,8 @@ export const useProductStore = defineStore('product', {
     state: () => {
         return {
             product: null as unknown as ProductType,
-            productSearchSuggestion: null as unknown as SuggestionsType
+            productSearchSuggestion: null as unknown as SuggestionsType,
+            preAddToCartProductOptions: null as unknown as Combination
         }
     },
     actions: {
@@ -45,6 +46,11 @@ export const useProductStore = defineStore('product', {
             UIStore.updateSuggestionSpinner(false)
             if (data.value.code === 200)
                 this.productSearchSuggestion = data.value?.psdata || undefined
+        },
+        setPreAddToCartProductOptions(id_product_attribute: string) {
+            // fetch inside combinations 
+            const g = this.product.combinations.filter(combination => combination.combination_code === id_product_attribute)
+            this.preAddToCartProductOptions = g[0] || null
         }
     },
     getters: {
@@ -56,6 +62,9 @@ export const useProductStore = defineStore('product', {
         },
         getProductOptions: (state): Option[] => {
             return state.product.options
+        },
+        getPreAddToCartProductOptions(state): Combination | undefined {
+            return state.preAddToCartProductOptions
         }
     }
 })

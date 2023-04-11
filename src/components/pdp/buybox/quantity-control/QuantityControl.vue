@@ -29,6 +29,15 @@ const { quantity, minimal_quantity, allow_out_of_stock, available_for_order } =
 let quantityControl: Ref<number> = ref(
   parseInt(minimal_quantity?.value || "0")
 );
+watch(
+  () => quantityControl.value,
+  (newValue, oldValue) => {
+    if (newValue && newValue > (quantity as Ref<number>).value) {
+      quantityControl.value = (quantity as Ref<number>).value;
+    }
+    emit("quantityUpdate", quantityControl.value);
+  }
+);
 /**
  * Controll the quantity input field
  * @param action string
@@ -37,6 +46,7 @@ const controlQuantity = (action: string) => {
   if (action === "+") {
     if ((quantity as Ref<number>)?.value >= quantityControl.value + 1)
       quantityControl.value++;
+    else quantityControl.value = quantity?.value || 0;
   } else {
     if (parseInt(minimal_quantity?.value || "0") <= quantityControl.value - 1)
       quantityControl.value--;

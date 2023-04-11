@@ -63,6 +63,14 @@ const handleSizeSelection = (sizeId: number) => {
 const handleColorSelection = (sizeId: number) => {
   currentColorSelection.value = sizeId;
 };
+watch(
+  () => [currentSizeSelection.value, currentColorSelection.value],
+  (newValue, oldValue) => {
+    const id_product_attribute = newValue.toString().replace(",", "_");
+    // update the store
+    PDPStore.setPreAddToCartProductOptions(id_product_attribute);
+  }
+);
 </script>
 
 <style lang="scss" scoped>
