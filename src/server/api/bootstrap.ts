@@ -1,11 +1,10 @@
-import { cartPath } from "~~/src/config/APIRoutes";
+import { cartPath, lightbootstrap } from "~~/src/config/APIRoutes";
 import prepareCookie from "~~/src/helpers/prepareCookie";
 
 export default defineEventHandler(async (event) => {
     const parsedCookies = parseCookies(event)
-    const { id_product, qty, id_product_attribute } = await readBody(event)
     const data = await $fetch.raw(
-        `${process.env.API_ENDPOINT}${cartPath}?update=1&id_product=${id_product}&id_product_attribute=${id_product_attribute}&op=up&action=update&image_size=medium_default&qty=${qty}`, {
+        `${process.env.API_ENDPOINT}${lightbootstrap}`, {
         headers: {
             "cookie": prepareCookie(parsedCookies)
         }

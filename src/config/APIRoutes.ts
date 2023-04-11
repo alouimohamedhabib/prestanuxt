@@ -1,3 +1,5 @@
 export const bootstrapPath = "bootstrap"
+export const lightbootstrap = "lightbootstrap"
 export const productSearchPath = "productSearch"
 export const productdetailPath = "productdetail"
+export const cartPath = "cart"

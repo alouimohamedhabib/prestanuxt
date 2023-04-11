@@ -50,7 +50,8 @@ const addToCart = () => {
       min_quantity: parseInt(product.minimal_quantity),
     });
   }
-  // call to the API 
+  // call to the API
+  PDPStore.addToCart(qtyProp.value || 0);
 };
 </script>
 <style lang="scss" scoped>

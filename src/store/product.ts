@@ -6,6 +6,7 @@ import { ParamsType } from '../types/ApiType'
 import { Combination, Option, ProductType } from '../types/ProductType'
 import { SuggestionsType } from '../types/SuggestionsType'
 import { useUserInterfaceStore } from './UserInterface'
+import { AddProductCartObjectType } from '../types/CartType'
 
 export const useProductStore = defineStore('product', {
     state: () => {
@@ -17,6 +18,8 @@ export const useProductStore = defineStore('product', {
     },
     actions: {
         async init(path: string, params: ParamsType) {
+            // reset on page load
+            this.preAddToCartProductOptions = null as unknown as Combination
             const data = await ApiFront<ProductType>({
                 method: "POST",
                 path,
@@ -51,6 +54,25 @@ export const useProductStore = defineStore('product', {
             // fetch inside combinations 
             const g = this.product.combinations.filter(combination => combination.combination_code === id_product_attribute)
             this.preAddToCartProductOptions = g[0] || null
+        },
+        async addToCart(qty: number) {
+            // call the server API ( /api/cart)
+            const cartProductObject: AddProductCartObjectType = {
+                id_product: this.product.id_product,
+                qty,
+            }
+            if (this.getPreAddToCartProductOptions?.id_product_attribute) {
+                cartProductObject.id_product_attribute = this.getPreAddToCartProductOptions?.id_product_attribute
+            }
+            const { data } = useFetch("/api/cart", {
+                method: "POST",
+                body: {
+                    ...cartProductObject
+                }
+            })
+            console.log(data);
+
+
         }
     },
     getters: {
