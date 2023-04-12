@@ -2,12 +2,14 @@ import { defineStore } from "pinia";
 import { useLocalStorage } from '@vueuse/core'
 import { usePageStore } from "./Page";
 import { Language } from "../types/PageType";
+import { psModalStateType } from "../types/UIType";
 export const useUserInterfaceStore = defineStore('userInterface', {
     state: () => {
         return {
             showMenu: false,
             defaultLanguage: useLocalStorage("defaultLanguage", ""),
-            showSuggestionSpinner: false
+            showSuggestionSpinner: false,
+            psModalState: {} as unknown as psModalStateType
         }
     },
     actions: {
@@ -19,8 +21,10 @@ export const useUserInterfaceStore = defineStore('userInterface', {
         },
         updateSuggestionSpinner(spinnerState: boolean) {
             this.showSuggestionSpinner = spinnerState
+        },
+        updatePsModalState(psModalStateObject: psModalStateType) {
+            this.psModalState = psModalStateObject
         }
-
     },
 
     getters: {
@@ -44,6 +48,9 @@ export const useUserInterfaceStore = defineStore('userInterface', {
         },
         getSuggestionSpinner(state): boolean {
             return state.showSuggestionSpinner
+        },
+        getPsModalState(state): psModalStateType {
+            return state.psModalState
         }
     }
 })

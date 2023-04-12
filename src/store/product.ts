@@ -2,7 +2,7 @@
 
 import { defineStore } from 'pinia'
 import ApiFront from '../helpers/api.front'
-import { ParamsType } from '../types/ApiType'
+import { APIResponseType, ParamsType } from '../types/ApiType'
 import { Combination, Option, ProductType } from '../types/ProductType'
 import { SuggestionsType } from '../types/SuggestionsType'
 import { useUserInterfaceStore } from './UserInterface'
@@ -56,6 +56,7 @@ export const useProductStore = defineStore('product', {
             this.preAddToCartProductOptions = g[0] || null
         },
         async addToCart(qty: number) {
+            const uiStore = useUserInterfaceStore()
             // call the server API ( /api/cart)
             const cartProductObject: AddProductCartObjectType = {
                 id_product: this.product.id_product,
@@ -64,15 +65,26 @@ export const useProductStore = defineStore('product', {
             if (this.getPreAddToCartProductOptions?.id_product_attribute) {
                 cartProductObject.id_product_attribute = this.getPreAddToCartProductOptions?.id_product_attribute
             }
-            const { data } = useFetch("/api/cart", {
+            const { data } = await useFetch("/api/cart", {
                 method: "POST",
                 body: {
                     ...cartProductObject
                 }
             })
-            console.log(data);
-
-
+            if ((data?.value?._data as unknown as APIResponseType<any>).code === 200) {
+                uiStore.updatePsModalState({
+                    show: true,
+                    type: "ok",
+                    title: "This is is the title",
+                    content: "All went well",
+                    cb: {
+                        "gotocart": {
+                            label: "Go to cart",
+                            cb: () => console.log("Got to cart")
+                        }
+                    }
+                })
+            }
         }
     },
     getters: {

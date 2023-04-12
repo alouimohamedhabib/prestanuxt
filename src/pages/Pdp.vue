@@ -1,5 +1,6 @@
 <template>
   <div v-if="productDetails">
+    <AtomsModal />
     <PdpThumbnail
       :product-images="productDetails.images"
       :description_short="productDetails.description_short"
