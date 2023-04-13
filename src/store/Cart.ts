@@ -1,16 +1,20 @@
 import { defineStore } from "pinia";
+import { PsdataCart } from "../types/CartType";
 
 export const useCartStore = defineStore('cart', {
     state: () => {
         return {
-            cart: 0,
+            cart: null as unknown as PsdataCart,
         }
     },
     actions: {
-        increment() {
-            this.cart = 123
-        },
+        setCartObject(cartObject: PsdataCart) {
+            this.cart = cartObject
+        }
     },
     getters: {
+        getCartObject(state) {
+            return state.cart
+        }
     }
 })

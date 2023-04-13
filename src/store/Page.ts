@@ -1,10 +1,8 @@
 import { defineStore } from "pinia";
 import ApiFront from "../helpers/api.front";
 import { BannerType } from "../types/ApiType";
-import PagesNamesEnum from "../types/pagesType";
-import { FeaturedProductsList, Language, Languages, PageType } from "../types/PageType";
-import { ProductType } from "../types/ProductType";
-import { SuggestionsType } from "../types/SuggestionsType";
+import { FeaturedProductsList, Languages, PageType } from "../types/PageType";
+
 interface State {
     homepage: PageType | undefined
 }
@@ -12,7 +10,8 @@ interface State {
 export const usePageStore = defineStore('page', {
     state: (): State => {
         return {
-            homepage: undefined
+            homepage: undefined,
+            essentials: undefined
         }
     },
     actions: {

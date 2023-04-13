@@ -6,7 +6,8 @@ import { APIResponseType, ParamsType } from '../types/ApiType'
 import { Combination, Option, ProductType } from '../types/ProductType'
 import { SuggestionsType } from '../types/SuggestionsType'
 import { useUserInterfaceStore } from './UserInterface'
-import { AddProductCartObjectType } from '../types/CartType'
+import { AddProductCartObjectType, PsdataCart } from '../types/CartType'
+import { useCartStore } from './Cart'
 
 export const useProductStore = defineStore('product', {
     state: () => {
@@ -56,6 +57,7 @@ export const useProductStore = defineStore('product', {
             this.preAddToCartProductOptions = g[0] || null
         },
         async addToCart(qty: number) {
+            const cartStore = useCartStore()
             const uiStore = useUserInterfaceStore()
             // call the server API ( /api/cart)
             const cartProductObject: AddProductCartObjectType = {
@@ -71,16 +73,26 @@ export const useProductStore = defineStore('product', {
                     ...cartProductObject
                 }
             })
-            if ((data?.value?._data as unknown as APIResponseType<any>).code === 200) {
+            const reponseObject = data?.value?._data as unknown as APIResponseType<PsdataCart>
+            const self = this
+            if (reponseObject.code === 200) {
+                cartStore.setCartObject(reponseObject.psdata)
                 uiStore.updatePsModalState({
                     show: true,
                     type: "ok",
-                    title: "This is is the title",
-                    content: "All went well",
+                    title: "success",
+                    content: "product.add_to_cart_ok",
                     cb: {
                         "gotocart": {
                             label: "Go to cart",
-                            cb: () => console.log("Got to cart")
+                            cb: function () {
+                                uiStore.resetPsModalStateObject()
+                                self.router.push('/cart')
+                            }
+                        },
+                        "keepwhopping": {
+                            label: "keep_shopping",
+                            cb: () => uiStore.resetPsModalStateObject()
                         }
                     }
                 })

@@ -24,6 +24,9 @@ export const useUserInterfaceStore = defineStore('userInterface', {
         },
         updatePsModalState(psModalStateObject: psModalStateType) {
             this.psModalState = psModalStateObject
+        },
+        resetPsModalStateObject() {
+            this.psModalState = {} as psModalStateType
         }
     },
 

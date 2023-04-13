@@ -6,10 +6,16 @@
           ><i class="bi bi-house"></i
         ></NuxtLink>
       </div>
-      <div class="col-4 align-center">
+      <div class="col-4 align-center position-relative">
         <NuxtLink to="/cart" :active-class="'active'">
-          <i class="bi bi-cart4"></i
-        ></NuxtLink>
+          <i class="bi bi-cart4"></i>
+          <span
+            v-if="cartObject && cartObject.products_count"
+            class="position-absolute top-0 start-90 translate-middle badge rounded-pill bg-danger"
+          >
+            {{ cartObject.products_count }}
+          </span>
+        </NuxtLink>
       </div>
       <div class="col-4 align-center">
         <NuxtLink to="/account" :active-class="'active'">
@@ -20,7 +26,12 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useCartStore } from "../store";
+
+const cartStore = useCartStore();
+const cartObject = computed(() => cartStore.getCartObject);
+</script>
 <style lang="scss" scoped>
 .active {
   font-size: 1.2em;

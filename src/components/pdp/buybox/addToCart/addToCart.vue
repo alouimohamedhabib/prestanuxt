@@ -1,10 +1,4 @@
 <template>
-  <pre>
-    Errors {{ errors }}
-    qty : {{ qty }}
-    minimal_quantity {{ preAddToCartProductOptions?.minimal_quantity }}
-    quantity {{ preAddToCartProductOptions?.quantity }}
-  </pre>
   <button type="button" @click="addToCart" class="add-to-cart disabled">
     <i class="bi bi-bag"></i> {{ $t("product.add_to_cart") }}
   </button>

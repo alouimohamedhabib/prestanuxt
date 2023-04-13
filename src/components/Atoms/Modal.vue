@@ -12,21 +12,23 @@
           v-if="modalObject.type === 'ko'"
         ></i>
       </div>
-      <div class="modalPs--wrapper__title">{{ modalObject.title }}</div>
+      <div class="modalPs--wrapper__title">{{ $t(modalObject.title) }}</div>
       <div class="modalPs--wrapper__content mb-4">
-        {{ modalObject.content }}
+        {{ $t(modalObject.content, { p: product.name }) }}
       </div>
       <div class="modalPs--wrapper__cb">
         <template v-for="(g, index) in modalObject.cb" :key="index">
-          <button @click="g.cb">{{ g.label }}</button>
+          <button @click="g.cb">{{ $t(g.label) }}</button>
         </template>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { useUserInterfaceStore } from "~~/src/store";
+import { useProductStore, useUserInterfaceStore } from "~~/src/store";
 
+const PDPStore = useProductStore();
+const product = PDPStore.getProductDetails;
 const uiStore = useUserInterfaceStore();
 const modalObject = computed(() => uiStore.getPsModalState);
 </script>
@@ -74,12 +76,17 @@ const modalObject = computed(() => uiStore.getPsModalState);
       overflow: scroll;
     }
     &__cb {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       button {
         background-color: #000000;
         color: #ffffff;
         border-radius: 30px;
         padding: 15px 20px;
         border: none;
+        margin: 10px 5px;
+        flex: 1 1 50%;
       }
     }
   }

@@ -4,13 +4,18 @@
     "viewAll": "Voir tout",
     "size": "La taille",
     "description": "Description",
+    "success": "Succès!",
+    "failure": "Echec!",
+    "keep_shopping": "Continuer mes achats",
     "product": {
         "no_result": "Pas de produits trouvés pour",
         "result_for": "Résulat de recherche pour ",
         "available_in_stock": "Disponible a l'achat",
         "not_available_in_stock": "Non disponible a l'achat",
         "total_price": "Prix total",
-        "add_to_cart": "Ajouter au panier"
+        "add_to_cart": "Ajouter au panier",
+        "add_to_cart_ok": "Le produit {p} a été ajouté avec succès au panier.",
+        "add_to_cart_ko": "Une erreur s'est produite lors de l'ajout du produit {p} au panier."
     },
     "input": {
         "search": {

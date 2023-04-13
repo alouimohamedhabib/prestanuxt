@@ -4,13 +4,18 @@
     "viewAll": "View All",
     "size": "size",
     "description": "Description",
+    "success": "Successful!",
+    "failure": "Failure!",
+    "keep_shopping": "Continue shopping",
     "product": {
         "no_result": "No products found for",
         "result_for": "Search results for ",
         "available_in_stock": "Avaliable in stock",
         "not_available_in_stock": "Not avaliable in stock ",
         "total_price": "Total price",
-        "add_to_cart": "Add to cart"
+        "add_to_cart": "Add to cart",
+        "add_to_cart_ok": "Product {p} has been added successfully to cart.",
+        "add_to_cart_ko": "An error occured while add product {p} to cart.",
     },
     "input": {
         "search": {
