@@ -1,20 +1,27 @@
 import { defineStore } from "pinia";
 import ApiFront from "../helpers/api.front";
-import { BannerType } from "../types/ApiType";
+import { APIResponseType, BannerType, EssentialsType } from "../types/ApiType";
 import { FeaturedProductsList, Languages, PageType } from "../types/PageType";
 
+
 interface State {
-    homepage: PageType | undefined
+    homepage: PageType | undefined,
+    essentials: EssentialsType
 }
 
 export const usePageStore = defineStore('page', {
     state: (): State => {
         return {
             homepage: undefined,
-            essentials: undefined
+            essentials: null as unknown as EssentialsType
         }
     },
     actions: {
+        async bootstrapApp() {
+            const { data } = await useFetch("/api/bootstrap");
+            const apiReponse = (data.value?._data as unknown as APIResponseType<EssentialsType>)
+            this.essentials = apiReponse.psdata
+        },
         async init(pagePath: string) {
             // call server api
             const data = await ApiFront<PageType>({
@@ -36,7 +43,7 @@ export const usePageStore = defineStore('page', {
             return state.homepage?.featuredProductsList
         },
         getLanguages(state): Languages | undefined {
-            return state.homepage?.languages
+            return state.essentials?.languages
         }
     }
 })

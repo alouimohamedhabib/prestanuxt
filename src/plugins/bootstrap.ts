@@ -1,5 +1,11 @@
+import { useCartStore, usePageStore } from "../store";
+
 export default defineNuxtPlugin((ctx) => {
     onNuxtReady(async () => {
-        const data = await useFetch("/api/bootstrap");
+        const pageStore = usePageStore()
+        const cartStore = useCartStore()
+        await pageStore.bootstrapApp()
+        cartStore.fetchInformation()
+
     })
 })
