@@ -7,6 +7,12 @@
     "success": "Succès!",
     "failure": "Echec!",
     "keep_shopping": "Continuer mes achats",
+    "form": {
+        "login": "Se connecter",
+        "email": "Email",
+        "password": "Mot de passe",
+        "sign-message": "Veuillez vous connecter ou vous connecter pour continuer à utiliser notre application"
+    },
     "product": {
         "no_result": "Pas de produits trouvés pour",
         "result_for": "Résulat de recherche pour ",

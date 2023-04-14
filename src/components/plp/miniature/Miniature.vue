@@ -9,7 +9,7 @@
       />
     </NuxtLink>
     <h2 class="product--name">
-      {{ product?.name }} ÷÷ {{ product?.category_name }}
+      {{ product?.name }}
     </h2>
     <h3 class="product--category">
       {{ product?.category_name }}

@@ -44,6 +44,9 @@ export const usePageStore = defineStore('page', {
         },
         getLanguages(state): Languages | undefined {
             return state.essentials?.languages
+        },
+        getPageEssentials(state): EssentialsType {
+            return  state.essentials
         }
     }
 })
