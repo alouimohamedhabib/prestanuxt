@@ -14,7 +14,8 @@
         "sign-message": "Veuillez vous connecter ou vous connecter pour continuer à utiliser notre application",
         "errors": {
             "email": "Email non valide",
-            "password_length": "Mot de passe obligatoire"
+            "password_length": "Mot de passe obligatoire",
+            "wrong_credentials": "Mauvais identifiants"
         }
     },
     "product": {

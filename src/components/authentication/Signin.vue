@@ -3,11 +3,14 @@
     <form class="auth_form">
       <div class="row">
         <div class="col-12">
-          <template v-for="(error, index) in errors" :key="index">
-            <div class="alert alert-danger" role="alert">
-              {{ error }}
-            </div>
-          </template>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            v-if="signinErrors && signinErrors.code === 306"
+          >
+            {{ $t("form.errors.wrong_credentials") }}
+          </div>
+          <template v-for="(error, index) in errors" :key="index"> </template>
         </div>
         <div class="col-12">
           <label for="inputLogin">{{ $t("form.email") }}</label>
@@ -43,6 +46,7 @@ import { useAccountStore } from "~~/src/store";
 const accountStore = useAccountStore();
 const { t } = useI18n();
 const errors: Ref<string[]> = ref([]);
+const signinErrors = computed(() => accountStore.getErrors);
 const login = ref("sam@binshops.com");
 const password = ref("123456789");
 const handleFormInput = (event: MouseEvent) => {
