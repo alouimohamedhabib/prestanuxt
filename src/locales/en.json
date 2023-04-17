@@ -11,7 +11,11 @@
         "login": "Login",
         "email": "Email",
         "password": "Password",
-        "sign-message":"Please login or log in to continue using our app"
+        "sign-message": "Please login or log in to continue using our app",
+        "errors": {
+            "email": "Invalid email",
+            "password_length": "Password required"
+        }
     },
     "product": {
         "no_result": "No products found for",

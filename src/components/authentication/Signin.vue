@@ -3,6 +3,13 @@
     <form class="auth_form">
       <div class="row">
         <div class="col-12">
+          <template v-for="(error, index) in errors" :key="index">
+            <div class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+          </template>
+        </div>
+        <div class="col-12">
           <label for="inputLogin">{{ $t("form.email") }}</label>
           <input
             id="inputLogin"
@@ -18,7 +25,10 @@
             v-model="password"
           />
           <div>
-            <button class="dark-button w-100 mt-4 auth_form--button">
+            <button
+              @click="handleFormInput($event)"
+              class="dark-button w-100 mt-4 auth_form--button"
+            >
               {{ $t("form.login") }}
             </button>
           </div>
@@ -28,8 +38,31 @@
   </div>
 </template>
 <script setup lang="ts">
-const login = ref();
-const password = ref();
+import { notEmptyString, validateEmail } from "~~/src/helpers/formValidate";
+import { useAccountStore } from "~~/src/store";
+const accountStore = useAccountStore();
+const { t } = useI18n();
+const errors: Ref<string[]> = ref([]);
+const login = ref("sam@binshops.com");
+const password = ref("123456789");
+const handleFormInput = (event: MouseEvent) => {
+  errors.value = [];
+  event.preventDefault();
+  // check email
+  if (!validateEmail(login.value || "")) {
+    errors.value = [...errors.value, t("form.errors.email")];
+  }
+  // check password
+  if (!notEmptyString(password.value || "")) {
+    errors.value = [...errors.value, t("form.errors.password_length")];
+  }
+  if (!errors.value.length) {
+    accountStore.auth({
+      email: login.value,
+      password: password.value,
+    });
+  }
+};
 </script>
 
 <style lang="scss" scoped>

@@ -11,7 +11,11 @@
         "login": "Se connecter",
         "email": "Email",
         "password": "Mot de passe",
-        "sign-message": "Veuillez vous connecter ou vous connecter pour continuer à utiliser notre application"
+        "sign-message": "Veuillez vous connecter ou vous connecter pour continuer à utiliser notre application",
+        "errors": {
+            "email": "Email non valide",
+            "password_length": "Mot de passe obligatoire"
+        }
     },
     "product": {
         "no_result": "Pas de produits trouvés pour",
