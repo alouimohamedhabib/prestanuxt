@@ -7,6 +7,15 @@
     "success": "Succès!",
     "failure": "Echec!",
     "keep_shopping": "Continuer mes achats",
+    "profile": {
+        "name": "Nom",
+        "email": "Email",
+        "gender": {
+            "male": "Masculin",
+            "female": "Feminin",
+            "label": "Sexe"
+        }
+    },
     "form": {
         "login": "Se connecter",
         "email": "Email",

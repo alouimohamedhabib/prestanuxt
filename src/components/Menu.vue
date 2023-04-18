@@ -57,7 +57,7 @@ const DefaultLanguageFromLocalStorage = computed(
 if (DefaultLanguageFromLocalStorage !== undefined) {
   vLocale.value = DefaultLanguageFromLocalStorage.value || "";
 }
-// watch the language changed
+// watch the language switcher changes
 watch(vLocale, (selectedLanguage: string) => {
   // update the store userInterfaceStore
   let selectedLanguageObject: Language | undefined = undefined;

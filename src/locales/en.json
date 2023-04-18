@@ -7,6 +7,15 @@
     "success": "Successful!",
     "failure": "Failure!",
     "keep_shopping": "Continue shopping",
+    "profile": {
+        "name": "name",
+        "email": "Email",
+        "gender": {
+            "male": "Male",
+            "female": "Female",
+            "label": "Gender"
+        }
+    },
     "form": {
         "login": "Login",
         "email": "Email",
@@ -15,7 +24,7 @@
         "errors": {
             "email": "Invalid email",
             "password_length": "Password required",
-            "wrong_credentials" : "Wrong credentials"
+            "wrong_credentials": "Wrong credentials"
         }
     },
     "product": {
