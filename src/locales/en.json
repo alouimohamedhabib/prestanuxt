@@ -7,6 +7,8 @@
     "success": "Successful!",
     "failure": "Failure!",
     "keep_shopping": "Continue shopping",
+    "signup": "Sign up",
+    "signin": "Sign in",
     "profile": {
         "title": "My profile",
         "name": "name",

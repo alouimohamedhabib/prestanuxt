@@ -8,7 +8,8 @@ export const useAccountStore = defineStore("account", {
             accountInfo: null as unknown as User,
             error: null as unknown as APIResponseType<AccountPsdata>,
             fetching: true,
-            signOutOk: false
+            signOutOk: false,
+            showSigninForm: true
         }
     },
     actions: {
@@ -62,6 +63,9 @@ export const useAccountStore = defineStore("account", {
         // dismissSignOutOk
         dismissSignOutOk() {
             this.signOutOk = false
+        },
+        defineShowSigninForm() {
+            this.showSigninForm = !this.showSigninForm
         }
     },
     getters: {
@@ -76,6 +80,9 @@ export const useAccountStore = defineStore("account", {
         },
         getErrors(state): APIResponseType<AccountPsdata> {
             return state.error
+        },
+        getshowSigninForm(state) {
+            return state.showSigninForm
         }
     }
 })
