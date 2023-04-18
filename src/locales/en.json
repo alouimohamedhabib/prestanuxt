@@ -11,6 +11,9 @@
         "title": "My profile",
         "name": "name",
         "email": "Email",
+        "age": "Age",
+        "logout": "Sign out",
+        "disconnected_ok": "User logged out successfully",
         "gender": {
             "male": "Male",
             "female": "Female",

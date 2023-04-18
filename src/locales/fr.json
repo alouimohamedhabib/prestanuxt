@@ -7,10 +7,13 @@
     "success": "Succès!",
     "failure": "Echec!",
     "keep_shopping": "Continuer mes achats",
+    "logout": "Se deconnecter",
+    "disconnected_ok": "Utilisateur déconnecter avec succés",
     "profile": {
         "title": "Mon profil",
         "name": "Nom",
         "email": "Email",
+        "age": "Age",
         "gender": {
             "male": "Masculin",
             "female": "Feminin",

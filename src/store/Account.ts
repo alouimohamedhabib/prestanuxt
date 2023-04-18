@@ -7,7 +7,8 @@ export const useAccountStore = defineStore("account", {
         return {
             accountInfo: null as unknown as User,
             error: null as unknown as APIResponseType<AccountPsdata>,
-            fetching: true
+            fetching: true,
+            signOutOk: false
         }
     },
     actions: {
@@ -44,9 +45,29 @@ export const useAccountStore = defineStore("account", {
             if (responseObject.code === 200) {
                 this.accountInfo = responseObject.psdata as unknown as User
             }
+        },
+        async logout() {
+            const { data, pending } = await useLazyFetch('/api/auth', {
+                method: "POST",
+                body: {
+                    logout: true
+                }
+            })
+            const responseObject = data?.value?._data as unknown as APIResponseType<AccountPsdata>
+            if (responseObject.code === 200) {
+                this.accountInfo = null as unknown as User
+                this.signOutOk = true
+            }
+        },
+        // dismissSignOutOk
+        dismissSignOutOk() {
+            this.signOutOk = false
         }
     },
     getters: {
+        getsignOutOk(state) {
+            return state.signOutOk
+        },
         getFetching(state) {
             return state.fetching
         },

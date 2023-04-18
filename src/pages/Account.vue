@@ -14,4 +14,5 @@ import { useAccountStore } from "../store";
 const accountStore = useAccountStore();
 const accountProfile = computed(() => accountStore.getAccountInfo);
 const isFetching = computed(() => accountStore.getFetching);
+
 </script>

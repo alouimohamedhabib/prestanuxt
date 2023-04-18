@@ -4,6 +4,23 @@
       <div class="col-12 logo mb-2 text-center mt-5 mb-5">
         <img :src="essantialData?.logo_url" alt="" />
       </div>
+      <div class="col-12">
+        <div v-if="signOutOk">
+          <div
+            class="alert alert-success fs-6 alert-dismissible fade show"
+            role="alert"
+          >
+            {{ $t("profile.disconnected_ok") }}
+            <button
+              @click="dismiss"
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+        </div>
+      </div>
       <div class="col-12 welcome mt-4 authentication--header mb-5">
         <h2 class="fw-bold">
           {{ $t("welcome") }}
@@ -87,6 +104,8 @@ const handleFormInput = (event: MouseEvent) => {
     });
   }
 };
+const signOutOk = computed(() => accountStore.getsignOutOk);
+const dismiss = () => accountStore.dismissSignOutOk();
 </script>
 
 <style lang="scss" scoped>

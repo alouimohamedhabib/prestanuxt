@@ -38,13 +38,30 @@
           {{ userInfo.email }}
         </div>
       </div>
+      <div class="col-4">
+        <div class="profile--label">
+          {{ $t("profile.age") }}
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="profile--info">
+          {{ calculateAge(userInfo.birthday) }}
+        </div>
+      </div>
+      <div class="col-12">
+        <button @click="logout" class="dark-button w-100 rounded-2 mt-5">
+          {{ $t("profile.logout") }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { useAccountStore } from "~~/src/store";
+import calculateAge from "../../helpers/AgeCalculator";
 const userStore = useAccountStore();
 const userInfo = userStore.getAccountInfo;
+const logout = () => userStore.logout()
 </script>
 <style lang="scss" scoped>
 .profile {

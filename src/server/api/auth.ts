@@ -1,4 +1,4 @@
-import { accountInfoPath, loginPath } from "~~/src/config/APIRoutes";
+import { accountInfoPath, loginPath, logoutPath } from "~~/src/config/APIRoutes";
 import ForwardCookies from "~~/src/helpers/forwardCookies";
 import prepareCookie from "~~/src/helpers/prepareCookie";
 import { HTTPVerbsType } from "~~/src/types/HTTPVerbsType";
@@ -7,13 +7,16 @@ export default defineEventHandler(async (event) => {
     const eventBody = await readBody(event);
     const parsedCookies = parseCookies(event)
     let url = process.env.API_ENDPOINT || ""
-
-    let methodString: HTTPVerbsType = "POST"
+    let methodString: HTTPVerbsType = "GET"
 
     if (eventBody.fetch) {
         url += accountInfoPath
-        methodString = "GET"
-    } else {
+    }
+    else if (eventBody.logout) {
+        url += logoutPath
+    }
+    else {
+        methodString = "POST"
         url += loginPath
     }
     let bodyObject = methodString === "POST" ? {
