@@ -6,7 +6,8 @@ export const useAccountStore = defineStore("account", {
     state: () => {
         return {
             accountInfo: null as unknown as User,
-            error: null as unknown as APIResponseType<AccountPsdata>
+            error: null as unknown as APIResponseType<AccountPsdata>,
+            fetching: true
         }
     },
     actions: {
@@ -28,9 +29,27 @@ export const useAccountStore = defineStore("account", {
                 this.error = responseObject
                 this.accountInfo = null as unknown as User
             }
+        },
+        async fetch() {
+            const { data, pending } = await useLazyFetch('/api/auth', {
+                method: "POST",
+                body: {
+                    fetch: true
+                }
+            })
+            if (!pending.value)
+                this.fetching = false
+
+            const responseObject = data?.value?._data as unknown as APIResponseType<AccountPsdata>
+            if (responseObject.code === 200) {
+                this.accountInfo = responseObject.psdata as unknown as User
+            }
         }
     },
     getters: {
+        getFetching(state) {
+            return state.fetching
+        },
         getAccountInfo(state) {
             return state.accountInfo
         },

@@ -1,6 +1,9 @@
 <template>
   <div class="container profile">
     <div class="row">
+      <div class="col-12">
+        <h1 class="pt-2 pb-2 mt-4">{{ $t("profile.title") }}</h1>
+      </div>
       <div class="col-4">
         <div class="profile--label">
           {{ $t("profile.name") }}
@@ -46,6 +49,7 @@ const userInfo = userStore.getAccountInfo;
 <style lang="scss" scoped>
 .profile {
   &--label {
+    padding: 1em 0;
     color: grey;
   }
   &--info {

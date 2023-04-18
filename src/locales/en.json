@@ -8,6 +8,7 @@
     "failure": "Failure!",
     "keep_shopping": "Continue shopping",
     "profile": {
+        "title": "My profile",
         "name": "name",
         "email": "Email",
         "gender": {
