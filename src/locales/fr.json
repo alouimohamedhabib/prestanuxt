@@ -21,10 +21,14 @@
         }
     },
     "form": {
+        "firstname": "Nom",
+        "lastname": "Prénom",
+        "register": "S'enregistrer",
         "login": "Se connecter",
         "email": "Email",
         "password": "Mot de passe",
-        "sign-message": "Veuillez vous connecter ou vous connecter pour continuer à utiliser notre application",
+        "signin-message": "Veuillez vous connecter ou vous connecter pour continuer à utiliser notre application",
+        "signup-message": "Créer un nouveau compte",
         "errors": {
             "email": "Email non valide",
             "password_length": "Mot de passe obligatoire",

@@ -32,6 +32,28 @@ export const useAccountStore = defineStore("account", {
                 this.accountInfo = null as unknown as User
             }
         },
+        async register(credentials: {
+            firstName: string,
+            lastName: string,
+            email: string,
+            password: string
+        }) {
+            const { data } = await useFetch('/api/auth', {
+                method: "POST",
+                body: {
+                    register: true,
+                    ...credentials
+                }
+            })
+            const responseObject = data?.value?._data as unknown as APIResponseType<AccountPsdata>
+            if (responseObject.code === 200) {
+                this.accountInfo = responseObject.psdata.user
+                this.error = null as unknown as APIResponseType<AccountPsdata>
+            } else {
+                this.error = responseObject
+                this.accountInfo = null as unknown as User
+            }
+        },
         async fetch() {
             const { data, pending } = await useLazyFetch('/api/auth', {
                 method: "POST",

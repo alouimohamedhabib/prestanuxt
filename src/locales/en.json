@@ -23,14 +23,20 @@
         }
     },
     "form": {
+        "firstname": "First name",
+        "lastname": "Last name",
+        "register": "Register",
         "login": "Login",
         "email": "Email",
         "password": "Password",
-        "sign-message": "Please login or log in to continue using our app",
+        "signin-message": "Please login or log in to continue using our app",
+        "signup-message": "Create a new account",
         "errors": {
             "email": "Invalid email",
             "password_length": "Password required",
-            "wrong_credentials": "Wrong credentials"
+            "wrong_credentials": "Wrong credentials",
+            "firstname_required": "First name is required",
+            "lastname_required": "Last name is required"
         }
     },
     "product": {

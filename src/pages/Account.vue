@@ -12,7 +12,7 @@
       class="auth-action d-block text-center mt-2 p-3"
       @click="alterShowSigninForm"
     >
-      {{ ShowSigninForm ? $t("sign") : $t("signup") }}
+      {{ ShowSigninForm ? $t("signin") : $t("signup") }}
     </div>
   </template>
 </template>

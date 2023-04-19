@@ -26,7 +26,7 @@
           {{ $t("welcome") }}
         </h2>
         <p class="fz-13">
-          {{ $t("form.sign-message") }}
+          {{ $t("form.signin-message") }}
         </p>
       </div>
       <div class="col-12 authentication--forms">
@@ -42,6 +42,9 @@
                   {{ $t("form.errors.wrong_credentials") }}
                 </div>
                 <template v-for="(error, index) in errors" :key="index">
+                  <span class="d-block alert alert-warning">
+                    {{ error }}
+                  </span>
                 </template>
               </div>
               <div class="col-12">

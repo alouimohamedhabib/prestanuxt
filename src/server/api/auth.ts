@@ -1,4 +1,4 @@
-import { accountInfoPath, loginPath, logoutPath } from "~~/src/config/APIRoutes";
+import { accountInfoPath, loginPath, logoutPath, registerPath } from "~~/src/config/APIRoutes";
 import ForwardCookies from "~~/src/helpers/forwardCookies";
 import prepareCookie from "~~/src/helpers/prepareCookie";
 import { HTTPVerbsType } from "~~/src/types/HTTPVerbsType";
@@ -11,6 +11,10 @@ export default defineEventHandler(async (event) => {
 
     if (eventBody.fetch) {
         url += accountInfoPath
+    }
+    else if (eventBody.register) {
+        methodString = "POST"
+        url += registerPath
     }
     else if (eventBody.logout) {
         url += logoutPath
