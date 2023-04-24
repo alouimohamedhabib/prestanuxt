@@ -9,6 +9,10 @@
     "keep_shopping": "Continuer mes achats",
     "logout": "Se deconnecter",
     "disconnected_ok": "Utilisateur déconnecter avec succés",
+    "order": {
+        "history_title": "Orders history",
+        "history_subtitle": "Vous trouverez ici vos commandes passées depuis la création de votre compte"
+    },
     "profile": {
         "links": {
             "details": "Détails du profil",

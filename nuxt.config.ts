@@ -28,8 +28,16 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
         '@nuxtjs/i18n',
         '@nuxtjs/google-fonts',
-        'nuxt-swiper'
+        'nuxt-swiper',
+        '@nuxt/devtools',
     ],
+    devtools: {
+        // Enable devtools (default: true)
+        enabled: false,
+        // VS Code Server options
+        vscode: {},
+        // ...other options
+    },
     googleFonts: {
         families: {
             Poppins: {

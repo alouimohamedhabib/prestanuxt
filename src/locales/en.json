@@ -9,6 +9,10 @@
     "keep_shopping": "Continue shopping",
     "signup": "Sign up",
     "signin": "Sign in",
+    "order": {
+        "history_title": "Orders history",
+        "history_subtitle": "Here you will find your orders placed since the creation of your account"
+    },
     "profile": {
         "title": "My profile",
         "name": "name",

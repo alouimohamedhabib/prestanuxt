@@ -45,6 +45,11 @@ const defaultRoutes = [
         name: "accountOrders"
     },
     {
+        path: "/account/orders/:order_id",
+        file: "@/components/account/OrderDetails.vue",
+        name: "orderDetails"
+    },
+    {
         path: "/search/:s",
         file: "@/pages/SearchResult.vue",
         name: "SearchResult"
