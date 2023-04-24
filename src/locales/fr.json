@@ -10,6 +10,11 @@
     "logout": "Se deconnecter",
     "disconnected_ok": "Utilisateur déconnecter avec succés",
     "profile": {
+        "links": {
+            "details": "Détails du profil",
+            "my_orders": "Mes ordres",
+            "settings": "Settings"
+        },
         "title": "Mon profil",
         "name": "Nom",
         "email": "Email",

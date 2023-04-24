@@ -16,6 +16,11 @@
         "age": "Age",
         "logout": "Sign out",
         "disconnected_ok": "User logged out successfully",
+        "links": {
+            "details": "Profile details",
+            "my_orders": "My orders",
+            "settings": "Settings"
+        },
         "gender": {
             "male": "Male",
             "female": "Female",

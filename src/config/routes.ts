@@ -30,14 +30,25 @@ const defaultRoutes = [
         name: "account"
     },
     {
+        path: "/account/edit",
+        file: "@/components/account/edit.vue",
+        name: "accountEdit"
+    },
+    {
+        path: "/account/info",
+        file: "@/components/account/Info.vue",
+        name: "accountDetails"
+    },
+    {
+        path: "/account/orders",
+        file: "@/components/account/Orders.vue",
+        name: "accountOrders"
+    },
+    {
         path: "/search/:s",
         file: "@/pages/SearchResult.vue",
         name: "SearchResult"
     },
-
-
-
-
 ]
 
 export default defaultRoutes 

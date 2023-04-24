@@ -5,6 +5,7 @@ import { useCheckoutStore } from "./Checkout"
 import { useUserInterfaceStore } from "./UserInterface"
 import { usePageStore } from './Page'
 import { useAccountStore } from './Account'
+import { useOrderStore } from './Orders'
 export {
     useProductListStore,
     useCartStore,
@@ -12,5 +13,6 @@ export {
     useCheckoutStore,
     useUserInterfaceStore,
     usePageStore,
-    useAccountStore
+    useAccountStore,
+    useOrderStore
 }

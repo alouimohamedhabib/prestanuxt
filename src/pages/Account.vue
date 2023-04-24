@@ -9,6 +9,7 @@
     <AuthenticationRegister v-if="!accountProfile && ShowSigninForm" />
     <AccountProfile v-if="accountProfile && accountProfile.active" />
     <div
+      v-if="!accountProfile"
       class="auth-action d-block text-center mt-2 p-3"
       @click="alterShowSigninForm"
     >
