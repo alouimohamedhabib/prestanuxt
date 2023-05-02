@@ -10,6 +10,17 @@
     "signup": "Sign up",
     "signin": "Sign in",
     "order": {
+        "order_details": {
+            "quantity": "Quantity",
+            "item_price": "Price",
+            "order": "Order n°",
+            "date": "Date",
+            "transporter": "Transporteur",
+            "weight": "Weight",
+            "shipping_fees": "Shipping fees",
+            "tracking_nbr": "Tracking number",
+            "total": "Total"
+        },
         "history_title": "Orders history",
         "history_subtitle": "Here you will find your orders placed since the creation of your account"
     },
@@ -32,6 +43,7 @@
         }
     },
     "form": {
+        "birth": "Birthday",
         "firstname": "First name",
         "lastname": "Last name",
         "register": "Register",
@@ -57,6 +69,10 @@
         "add_to_cart": "Add to cart",
         "add_to_cart_ok": "Product {p} has been added successfully to cart.",
         "add_to_cart_ko": "An error occured while add product {p} to cart.",
+    },
+    "account": {
+        "edit": "Edit",
+        "edit-message": "Update your account informations"
     },
     "input": {
         "search": {

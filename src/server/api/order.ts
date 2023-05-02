@@ -9,8 +9,11 @@ export default defineEventHandler(async (event) => {
     let url = process.env.API_ENDPOINT || ""
     let methodString: HTTPVerbsType = "GET"
 
-    if (eventBody.fetch) {
+    if (eventBody.fetch || eventBody.id_order) {
         url += orderhistoryPath
+    }
+    if (eventBody.id_order) {
+        url += '?id_order=' + eventBody.id_order
     }
     // else if (eventBody.register) {
     //     methodString = "POST"
@@ -28,6 +31,8 @@ export default defineEventHandler(async (event) => {
     //         ...eventBody
     //     }
     // } : undefined
+    console.log(eventBody);
+
     const data = await $fetch.raw(url, {
         method: methodString,
         //  ...bodyObject,

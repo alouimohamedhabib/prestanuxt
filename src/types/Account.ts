@@ -4,6 +4,20 @@ export interface AccountType {
     psdata: AccountPsdata;
 }
 
+export interface EditAccountResponseType {
+    success: boolean;
+    code: number;
+    psdata: PsdataEditAccount;
+    message: string;
+}
+
+export interface PsdataEditAccount {
+    registered: boolean;
+    message: string;
+    customer_id: number;
+    session_data: number;
+}
+
 export interface AccountPsdata {
     status: string;
     message: string;

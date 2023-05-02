@@ -30,11 +30,6 @@ const defaultRoutes = [
         name: "account"
     },
     {
-        path: "/account/edit",
-        file: "@/components/account/edit.vue",
-        name: "accountEdit"
-    },
-    {
         path: "/account/info",
         file: "@/components/account/Info.vue",
         name: "accountDetails"
@@ -45,9 +40,14 @@ const defaultRoutes = [
         name: "accountOrders"
     },
     {
-        path: "/account/orders/:order_id",
+        path: "/account/orders/:id_order",
         file: "@/components/account/OrderDetails.vue",
         name: "orderDetails"
+    },
+    {
+        path: "/account/edit",
+        file: "@/components/account/EditAccount.vue",
+        name: "accountEdit"
     },
     {
         path: "/search/:s",

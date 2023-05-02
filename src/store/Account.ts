@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { APIResponseType } from "../types/ApiType";
-import { AccountPsdata, User } from "../types/Account";
+import { AccountPsdata, PsdataEditAccount, User } from "../types/Account";
 
 export const useAccountStore = defineStore("account", {
     state: () => {
@@ -30,6 +30,26 @@ export const useAccountStore = defineStore("account", {
             } else {
                 this.error = responseObject
                 this.accountInfo = null as unknown as User
+            }
+        },
+        async updateInfo(credentials: {
+            firstName: string,
+            lastName: string,
+            email: string,
+            birthday: string,
+            password: string,
+            gender: number
+        }) {
+            const { data } = await useFetch('/api/auth', {
+                method: "POST",
+                body: {
+                    edit: true,
+                    ...credentials
+                }
+            })
+
+            const responseObject = data?.value?._data as unknown as APIResponseType<PsdataEditAccount>
+            if (responseObject.code === 200) {
             }
         },
         async register(credentials: {
