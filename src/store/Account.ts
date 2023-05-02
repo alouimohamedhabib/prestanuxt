@@ -9,10 +9,15 @@ export const useAccountStore = defineStore("account", {
             error: null as unknown as APIResponseType<AccountPsdata>,
             fetching: true,
             signOutOk: false,
-            showSigninForm: true
+            showSigninForm: true,
+            updateProfileStatus: "",
+            refreshAccount: false,
         }
     },
     actions: {
+        ResetUpdateProfileStatus() {
+            this.updateProfileStatus = ""
+        },
         async auth(credentials: {
             email: string,
             password: string
@@ -50,6 +55,10 @@ export const useAccountStore = defineStore("account", {
 
             const responseObject = data?.value?._data as unknown as APIResponseType<PsdataEditAccount>
             if (responseObject.code === 200) {
+                this.updateProfileStatus = "ok"
+                this.refreshAccount = true
+            } else {
+                this.updateProfileStatus = "ko"
             }
         },
         async register(credentials: {
@@ -111,6 +120,12 @@ export const useAccountStore = defineStore("account", {
         }
     },
     getters: {
+        getrefreshAccount(state) {
+            return state.refreshAccount
+        },
+        getupdateProfileStatus(state) {
+            return state.updateProfileStatus
+        },
         getsignOutOk(state) {
             return state.signOutOk
         },

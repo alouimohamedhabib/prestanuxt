@@ -49,7 +49,10 @@
         </div>
       </div>
       <div class="col-12">
-        <NuxtLink :to="'/account/edit'" class="dark-button d-block mt-3 w-100 text-center">
+        <NuxtLink
+          :to="'/account/edit'"
+          class="dark-button d-block mt-3 w-100 text-center"
+        >
           {{ $t("account.edit") }}
         </NuxtLink>
       </div>
@@ -61,7 +64,11 @@ import { useAccountStore } from "~~/src/store";
 import calculateAge from "../../helpers/AgeCalculator";
 const userStore = useAccountStore();
 const userInfo = computed(() => userStore.getAccountInfo);
+const refreshAccount = computed(() => userStore.getrefreshAccount);
 const logout = () => userStore.logout();
+onNuxtReady(() => {
+  if (refreshAccount) userStore.fetch();
+});
 </script>
 <style lang="scss" scoped>
 .profile {

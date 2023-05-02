@@ -20,6 +20,20 @@
             <div class="row">
               <div class="col-12">
                 <div
+                  class="alert alert-success"
+                  v-if="updateProfileStatus === 'ok'"
+                >
+                  {{ $t("form.accountupdateOK") }}
+                </div>
+                <div
+                  class="alert alert-error"
+                  v-if="updateProfileStatus === 'ko'"
+                >
+                  {{ $t("form.accountupdateko") }}
+                </div>
+              </div>
+              <div class="col-12">
+                <div
                   class="alert alert-danger"
                   role="alert"
                   v-if="signupErrors && signupErrors.code === 306"
@@ -82,10 +96,15 @@ import { notEmptyString, validateEmail } from "~~/src/helpers/formValidate";
 import { useAccountStore } from "~~/src/store";
 import { User } from "~~/src/types/Account";
 const accountStore = useAccountStore();
-
+const updateProfileStatus = computed(() => accountStore.getupdateProfileStatus);
 const { t } = useI18n();
 const errors: Ref<string[]> = ref([]);
 const signupErrors = computed(() => accountStore.getErrors);
+
+// reset staff and spin staff
+onNuxtReady(() => {
+  accountStore.ResetUpdateProfileStatus();
+});
 const tmpUserInfo: User = JSON.parse(
   JSON.stringify(accountStore.getAccountInfo)
 );

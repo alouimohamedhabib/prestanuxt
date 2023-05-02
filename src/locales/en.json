@@ -43,6 +43,8 @@
         }
     },
     "form": {
+        "accountupdateOK": "Account updated successfully",
+        "accountupdateko": "Error while updating account info",
         "birth": "Birthday",
         "firstname": "First name",
         "lastname": "Last name",
@@ -52,6 +54,7 @@
         "password": "Password",
         "signin-message": "Please login or log in to continue using our app",
         "signup-message": "Create a new account",
+        "update": "Update",
         "errors": {
             "email": "Invalid email",
             "password_length": "Password required",
