@@ -10,7 +10,10 @@
         </p>
       </div>
       <div class="col-12">
-        <div class="alert alert-success" v-if="editAccountStatus === 'ok'">
+        <div
+          class="alert alert-success"
+          v-if="editAccountStatus && editAccountStatus === 'ok'"
+        >
           SUCCESS
         </div>
       </div>
@@ -95,12 +98,13 @@
 import { notEmptyString, validateEmail } from "~~/src/helpers/formValidate";
 import { useAccountStore } from "~~/src/store";
 import { User } from "~~/src/types/Account";
+
 const accountStore = useAccountStore();
 const updateProfileStatus = computed(() => accountStore.getupdateProfileStatus);
 const { t } = useI18n();
 const errors: Ref<string[]> = ref([]);
 const signupErrors = computed(() => accountStore.getErrors);
-
+const editAccountStatus = computed(() => accountStore.getupdateProfileStatus)
 // reset staff and spin staff
 onNuxtReady(() => {
   accountStore.ResetUpdateProfileStatus();

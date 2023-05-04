@@ -45,7 +45,6 @@
 </template>
 <script lang="ts" setup>
 import { useAccountStore } from "~~/src/store";
-import calculateAge from "../../helpers/AgeCalculator";
 const userStore = useAccountStore();
 const userInfo = userStore.getAccountInfo;
 const logout = () => userStore.logout();
