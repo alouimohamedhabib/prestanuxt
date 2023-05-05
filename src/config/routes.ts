@@ -27,28 +27,31 @@ const defaultRoutes = [
     {
         path: "/account",
         file: "@/pages/Account.vue",
-        name: "account"
+        name: "account",
+        children: [
+            {
+                path: "/account/info",
+                file: "@/components/account/Info.vue",
+                name: "accountDetails"
+            },
+            {
+                path: "/account/orders",
+                file: "@/components/account/Orders.vue",
+                name: "accountOrders"
+            },
+            {
+                path: "/account/orders/:id_order",
+                file: "@/components/account/OrderDetails.vue",
+                name: "orderDetails"
+            },
+            {
+                path: "/account/edit",
+                file: "@/components/account/EditAccount.vue",
+                name: "accountEdit"
+            },
+        ]
     },
-    {
-        path: "/account/info",
-        file: "@/components/account/Info.vue",
-        name: "accountDetails"
-    },
-    {
-        path: "/account/orders",
-        file: "@/components/account/Orders.vue",
-        name: "accountOrders"
-    },
-    {
-        path: "/account/orders/:id_order",
-        file: "@/components/account/OrderDetails.vue",
-        name: "orderDetails"
-    },
-    {
-        path: "/account/edit",
-        file: "@/components/account/EditAccount.vue",
-        name: "accountEdit"
-    },
+
     {
         path: "/search/:s",
         file: "@/pages/SearchResult.vue",
