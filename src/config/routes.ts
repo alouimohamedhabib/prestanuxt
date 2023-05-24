@@ -14,16 +14,16 @@ const defaultRoutes = [
         file: "@/pages/Pdp.vue",
         name: "productDetails"
     },
-    {
-        path: "/cart",
-        file: "@/pages/Cart.vue",
-        name: "cart"
-    },
-    {
-        path: "/checkout",
-        file: "@/pages/Checkout.vue",
-        name: "checkout"
-    },
+    // {
+    //     path: "/cart",
+    //     file: "@/pages/checkout/Cart.vue",
+    //     name: "cart"
+    // },
+    // {
+    //     path: "/checkout",
+    //     file: "@/pages/checkout/Checkout.vue",
+    //     name: "checkout"
+    // },
     {
         path: "/account",
         file: "@/pages/Account.vue",

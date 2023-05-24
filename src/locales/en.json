@@ -63,6 +63,11 @@
             "lastname_required": "Last name is required"
         }
     },
+    "checkout": {
+        "cart": {
+            "h1": "My cart"
+        }
+    },
     "product": {
         "no_result": "No products found for",
         "result_for": "Search results for ",

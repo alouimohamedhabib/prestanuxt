@@ -50,18 +50,32 @@ const PDPStore = useProductStore();
 const currentSizeSelection: Ref<number> = ref(NaN);
 const currentColorSelection: Ref<number> = ref(NaN);
 const options = computed(() => PDPStore.getProductOptions);
-const colors: ComputedRef<Option[] | undefined> = computed(() =>
-  options.value.filter((item) => item.is_color_option == 1)
-);
-const sizes: ComputedRef<Option[] | undefined> = computed(() =>
-  options.value.filter((item) => item.is_color_option != 1)
-);
+const colors: ComputedRef<Option[] | undefined> = computed(() => {
+  const colorsArray = options.value.filter((item) => item.is_color_option == 1);
+  // define pre-selected size
+  currentColorSelection.value = colorsArray[0]?.items[0]?.id || NaN;
+  return colorsArray;
+});
+const sizes: ComputedRef<Option[] | undefined> = computed(() => {
+  const sizesArray = options.value.filter((item) => item.is_color_option != 1);
+  // define pre-selected size
+  currentSizeSelection.value = sizesArray[0]?.items[0]?.id || NaN;
+  return sizesArray;
+});
 
+/**
+ * Handle changes on size
+ * @param sizeId
+ */
 const handleSizeSelection = (sizeId: number) => {
   currentSizeSelection.value = sizeId;
 };
-const handleColorSelection = (sizeId: number) => {
-  currentColorSelection.value = sizeId;
+/**
+ * Handle changes on color
+ * @param colorId
+ */
+const handleColorSelection = (colorId: number) => {
+  currentColorSelection.value = colorId;
 };
 watch(
   () => [currentSizeSelection.value, currentColorSelection.value],
@@ -71,6 +85,7 @@ watch(
     PDPStore.setPreAddToCartProductOptions(id_product_attribute);
   }
 );
+// define default selection on page load
 </script>
 
 <style lang="scss" scoped>

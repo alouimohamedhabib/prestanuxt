@@ -8,6 +8,7 @@ import { SuggestionsType } from '../types/SuggestionsType'
 import { useUserInterfaceStore } from './UserInterface'
 import { AddProductCartObjectType, PsdataCart } from '../types/CartType'
 import { useCartStore } from './Cart'
+import { ProductCart } from '../types/CartType'
 
 export const useProductStore = defineStore('product', {
     state: () => {
@@ -63,6 +64,7 @@ export const useProductStore = defineStore('product', {
             const cartProductObject: AddProductCartObjectType = {
                 id_product: this.product.id_product,
                 qty,
+                update: 1
             }
             if (this.getPreAddToCartProductOptions?.id_product_attribute) {
                 cartProductObject.id_product_attribute = this.getPreAddToCartProductOptions?.id_product_attribute
@@ -90,7 +92,50 @@ export const useProductStore = defineStore('product', {
                                 self.router.push('/cart')
                             }
                         },
-                        "keepwhopping": {
+                        "keepshopping": {
+                            label: "keep_shopping",
+                            cb: () => uiStore.resetPsModalStateObject()
+                        }
+                    }
+                })
+            }
+        },
+        async updateCartItem(qty: number, productItem: ProductCart, op: "up" | 'down') {
+            const cartStore = useCartStore()
+            const uiStore = useUserInterfaceStore()
+            // call the server API ( /api/cart)
+            const cartProductObject: AddProductCartObjectType = {
+                id_product: parseInt(productItem?.id_product),
+                qty,
+                op,
+                update: 1,
+                id_product_attribute: parseInt(productItem?.id_product_attribute) || NaN
+            }
+
+            const { data } = await useFetch("/api/cart", {
+                method: "POST",
+                body: {
+                    ...cartProductObject,
+                }
+            })
+            const reponseObject = data?.value?._data as unknown as APIResponseType<PsdataCart>
+            const self = this
+            if (reponseObject.code === 200) {
+                cartStore.setCartObject(reponseObject.psdata)
+                uiStore.updatePsModalState({
+                    show: true,
+                    type: "ok",
+                    title: "success",
+                    content: "product.add_to_cart_ok",
+                    cb: {
+                        "gotocart": {
+                            label: "Go to cart",
+                            cb: function () {
+                                uiStore.resetPsModalStateObject()
+                                self.router.push('/cart')
+                            }
+                        },
+                        "keepshopping": {
                             label: "keep_shopping",
                             cb: () => uiStore.resetPsModalStateObject()
                         }

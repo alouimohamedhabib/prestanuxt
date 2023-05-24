@@ -12,6 +12,7 @@
           :minimal_quantity="productDetails.minimal_quantity"
           :available_for_order="productDetails.available_for_order"
           :allow_out_of_stock="productDetails.allow_out_of_stock"
+          :disableWatchKeyUp="false"
         />
       </div>
       <!-- productOptions -->
@@ -46,7 +47,6 @@
 <script setup lang="ts">
 import { useProductStore } from "~~/src/store";
 import ProductPrice from "../../../helpers/ProductPrice";
-
 
 const PDPStore = useProductStore();
 const productDetails = computed(() => PDPStore.getProductDetails);

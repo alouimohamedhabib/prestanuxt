@@ -6,7 +6,8 @@ export const useCheckoutStore = defineStore('cart', {
 
         }
     },
-    actions: {},
+    actions: {
+    },
     getters: {
     }
 })

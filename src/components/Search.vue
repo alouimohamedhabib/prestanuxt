@@ -31,7 +31,7 @@ watch(
       productStore.resetSuggestion();
       return;
     }
-    search();
+    // search();
   }
 );
 const redirectToSearchResult = () => {

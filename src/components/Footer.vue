@@ -7,7 +7,7 @@
         ></NuxtLink>
       </div>
       <div class="col-4 align-center position-relative">
-        <NuxtLink to="/cart" :active-class="'active'">
+        <NuxtLink to="/checkout/cart" :active-class="'active'">
           <i class="bi bi-cart4"></i>
           <span
             v-if="cartObject && cartObject.products_count"
