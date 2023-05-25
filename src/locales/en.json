@@ -64,8 +64,12 @@
         }
     },
     "checkout": {
+        "next": "Proceed to checkout",
         "cart": {
-            "h1": "My cart"
+            "h1": "My cart",
+            "total": "Total:",
+            "shipping": "Shipping:",
+            "bagTotal": "Bag total:"
         }
     },
     "product": {
