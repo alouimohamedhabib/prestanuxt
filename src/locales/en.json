@@ -65,9 +65,20 @@
     },
     "checkout": {
         "next": "Proceed to checkout",
+        "place_order": "Place order",
+        "shipping": {
+            "select-addr-label": "Delivery address",
+            "street": "Street",
+            "city": "City",
+            "state": "State",
+            "phone": "Phone number",
+            "zip": "Zip code",
+            "country": "Country"
+        },
         "cart": {
             "h1": "My cart",
             "total": "Total:",
+            "total_price": "Total:",
             "shipping": "Shipping:",
             "bagTotal": "Bag total:"
         }

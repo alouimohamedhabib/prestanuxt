@@ -6,6 +6,7 @@ import { APIResponseType } from "../types/ApiType";
 export const useCheckoutStore = defineStore('checkout', {
     state: () => {
         return {
+            selectedShippingAddress: NaN,
             shippingAddress: null as unknown as AddressTypeObject
         }
     },
@@ -24,11 +25,17 @@ export const useCheckoutStore = defineStore('checkout', {
                 this.shippingAddress = reponseObject.psdata
 
             }
+        },
+        setSelectedShippingAddress(id: number) {
+            this.selectedShippingAddress = id
         }
     },
     getters: {
         getAddresses(state): AddressTypeObject {
             return state.shippingAddress
+        },
+        getSelectedShippingAddress(state): number {
+            return state.selectedShippingAddress
         }
     }
 })

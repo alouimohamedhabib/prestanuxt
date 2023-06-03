@@ -1,3 +1,4 @@
+import { setaddresscheckoutPath } from "~~/src/config/APIRoutes";
 import { alladdressesPath } from "~~/src/config/APIRoutes";
 import ForwardCookies from "~~/src/helpers/forwardCookies";
 import prepareCookie from "~~/src/helpers/prepareCookie";
