@@ -12,8 +12,9 @@ export default defineEventHandler(async (event) => {
     if (eventBody.fetchAll) {
         url += alladdressesPath
     }
-    else if (eventBody.update) {
+    else if (eventBody.update || eventBody.setCheckoutAddress) {
         // TO DO
+        url += eventBody.setCheckoutAddress ? setaddresscheckoutPath : ""
         methodString = "POST"
     }
     else if (eventBody.getCountries) {

@@ -66,6 +66,7 @@
     "checkout": {
         "next": "Proceed to checkout",
         "place_order": "Place order",
+        "delivery": "Delivery",
         "shipping": {
             "select-addr-label": "Delivery address",
             "street": "Street",

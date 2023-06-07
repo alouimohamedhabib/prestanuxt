@@ -18,11 +18,11 @@
     <div class="col-6">
       <NuxtLink
         class="dark-button"
-        to="/checkout/payment"
+        to="/checkout/delivery"
         :class="{
           disabled: !checkoutStore.getSelectedShippingAddress,
         }"
-        >{{ $t("checkout.place_order") }}</NuxtLink
+        >{{ $t("checkout.delivery") }}</NuxtLink
       >
     </div>
   </div>

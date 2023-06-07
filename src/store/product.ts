@@ -89,7 +89,7 @@ export const useProductStore = defineStore('product', {
                             label: "Go to cart",
                             cb: function () {
                                 uiStore.resetPsModalStateObject()
-                                self.router.push('/cart')
+                                self.router.push('/checkout/cart')
                             }
                         },
                         "keepshopping": {

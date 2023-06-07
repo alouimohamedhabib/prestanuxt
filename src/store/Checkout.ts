@@ -26,8 +26,17 @@ export const useCheckoutStore = defineStore('checkout', {
 
             }
         },
-        setSelectedShippingAddress(id: number) {
-            this.selectedShippingAddress = id
+        async setSelectedShippingAddress(id: number) {
+            this.selectedShippingAddress = id;
+            // push info to the API
+            const { data } = await useFetch('/api/address', {
+                method: "POST",
+                body: {
+                    setCheckoutAddress: true,
+                    id_address: id
+                }
+            })
+            console.log(data.value)
         }
     },
     getters: {
