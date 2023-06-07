@@ -7,7 +7,9 @@ export const useCheckoutStore = defineStore('checkout', {
     state: () => {
         return {
             selectedShippingAddress: NaN,
-            shippingAddress: null as unknown as AddressTypeObject
+            shippingAddress: null as unknown as AddressTypeObject,
+            carrierId: 4,
+            paymentOptions: []
         }
     },
     actions: {
@@ -36,7 +38,17 @@ export const useCheckoutStore = defineStore('checkout', {
                     id_address: id
                 }
             })
-            console.log(data.value)
+
+        },
+        async fetchPaymentOptions() {
+            const { data } = await useFetch("/api/payment", {
+                method: "POST",
+                body: {
+                    fetchAll: true
+                }
+            })
+            console.log(data);
+            return data.value
         }
     },
     getters: {
@@ -45,6 +57,9 @@ export const useCheckoutStore = defineStore('checkout', {
         },
         getSelectedShippingAddress(state): number {
             return state.selectedShippingAddress
+        },
+        getPaymentOptions(state) {
+            return state.paymentOptions
         }
     }
 })

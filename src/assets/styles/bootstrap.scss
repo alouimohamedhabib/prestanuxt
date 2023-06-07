@@ -43,6 +43,7 @@ h1 {
   padding: 15px 20px;
   border: none;
   text-decoration: none;
+  display: inherit;
   &.disabled {
     pointer-events: none;
     opacity: 0.6;

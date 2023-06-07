@@ -66,7 +66,13 @@
     "checkout": {
         "next": "Proceed to checkout",
         "place_order": "Place order",
-        "delivery": "Delivery",
+        "payment": {
+            "title":"Payment options"
+        },
+        "delivery": {
+            "cta": "Delivery",
+            "title": "Delivery modes"
+        },
         "shipping": {
             "select-addr-label": "Delivery address",
             "street": "Street",

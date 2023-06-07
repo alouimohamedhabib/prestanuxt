@@ -22,7 +22,7 @@
         :class="{
           disabled: !checkoutStore.getSelectedShippingAddress,
         }"
-        >{{ $t("checkout.delivery") }}</NuxtLink
+        >{{ $t("checkout.delivery.cta") }}</NuxtLink
       >
     </div>
   </div>
