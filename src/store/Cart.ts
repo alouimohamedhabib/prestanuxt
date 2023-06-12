@@ -17,7 +17,6 @@ export const useCartStore = defineStore('cart', {
                 }
             })
             const reponseObject = data?.value?._data as unknown as APIResponseType<PsdataCart>
-            const self = this
             if (reponseObject.code === 200) {
                 this.cart = reponseObject.psdata
             }

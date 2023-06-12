@@ -94,7 +94,7 @@ export const useAccountStore = defineStore("account", {
                 this.fetching = false
 
             const responseObject = data?.value?._data as unknown as APIResponseType<AccountPsdata>
-            if (responseObject.code === 200) {
+            if (responseObject?.code === 200) {
                 this.accountInfo = responseObject.psdata as unknown as User
             }
         },

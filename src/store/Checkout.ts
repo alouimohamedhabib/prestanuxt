@@ -2,6 +2,7 @@ import { PropType } from "nuxt/dist/app/compat/capi";
 import { defineStore } from "pinia";
 import { AddressTypeObject } from "../types/AddressType";
 import { APIResponseType } from "../types/ApiType";
+import { PSPaymentOption, PaymentOption } from "../types/PaymentOptionsType";
 
 export const useCheckoutStore = defineStore('checkout', {
     state: () => {
@@ -9,7 +10,7 @@ export const useCheckoutStore = defineStore('checkout', {
             selectedShippingAddress: NaN,
             shippingAddress: null as unknown as AddressTypeObject,
             carrierId: 4,
-            paymentOptions: []
+            paymentOptions: null as unknown as PaymentOption
         }
     },
     actions: {
@@ -47,8 +48,12 @@ export const useCheckoutStore = defineStore('checkout', {
                     fetchAll: true
                 }
             })
-            console.log(data);
-            return data.value
+            const reponseObject = data?.value?._data as unknown as APIResponseType<PaymentOption>
+            if (reponseObject.code === 200) {
+                this.paymentOptions = reponseObject.psdata
+                this.paymentOptions
+            }
+            // TODO handle ERROS
         }
     },
     getters: {
@@ -58,8 +63,9 @@ export const useCheckoutStore = defineStore('checkout', {
         getSelectedShippingAddress(state): number {
             return state.selectedShippingAddress
         },
-        getPaymentOptions(state) {
-            return state.paymentOptions
+        getPaymentOptions(state): PSPaymentOption[][] {
+            const normalizedPaymentOption = Object.values(state?.paymentOptions || {})
+            return normalizedPaymentOption
         }
     }
 })
