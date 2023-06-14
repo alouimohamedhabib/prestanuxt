@@ -65,9 +65,13 @@
     },
     "checkout": {
         "next": "Proceed to checkout",
+        "pay": "Proceed to payment",
         "place_order": "Place order",
         "payment": {
-            "title":"Payment options"
+            "title": "Payment options",
+            "success": "Payment processed successfully",
+            "email_sent": "An email has been sent to {p}",
+            "note": "Please make sure you include {p} in your transfer"
         },
         "delivery": {
             "cta": "Delivery",
@@ -98,7 +102,7 @@
         "total_price": "Total price",
         "add_to_cart": "Add to cart",
         "add_to_cart_ok": "Product {p} has been added successfully to cart.",
-        "add_to_cart_ko": "An error occured while add product {p} to cart.",
+        "add_to_cart_ko": "An error occured while add product {p} to cart."
     },
     "account": {
         "edit": "Edit",
