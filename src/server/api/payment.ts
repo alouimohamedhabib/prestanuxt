@@ -15,7 +15,10 @@ export default defineEventHandler(async (event) => {
     else if (eventBody.update) {
         methodString = "POST"
     }
-    console.log(url);
+    else if (eventBody.pay && eventBody.paymentMethodName) {
+        methodString = "GET"
+        url += eventBody.paymentMethodName
+    }
 
     let bodyObject = methodString === "POST" ? {
         body: {
