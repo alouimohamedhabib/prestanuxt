@@ -24,5 +24,7 @@ export default defineEventHandler(async (event) => {
             appendHeader(event, 'set-cookie', cookie)
         }
     }
-    return data
+    return {
+        _data: data._data
+    }
 })

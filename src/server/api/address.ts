@@ -37,5 +37,7 @@ export default defineEventHandler(async (event) => {
     ForwardCookies(data, event)
     console.log(methodString);
 
-    return data
+    return {
+        _data: data._data
+    }
 })

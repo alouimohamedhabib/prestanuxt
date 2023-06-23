@@ -40,5 +40,7 @@ export default defineEventHandler(async (event) => {
             "cookie": prepareCookie(parsedCookies)
         }
     })
-    return data
+    return {
+        _data: data._data
+    }
 })
