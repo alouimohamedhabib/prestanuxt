@@ -31,22 +31,22 @@ const defaultRoutes = [
         children: [
             {
                 path: "/account/info",
-                file: "@/components/account/Info.vue",
+                file: "@/pages/account/Info.vue",
                 name: "accountDetails"
             },
             {
                 path: "/account/orders",
-                file: "@/components/account/Orders.vue",
+                file: "@/pages/account/Orders.vue",
                 name: "accountOrders"
             },
             {
                 path: "/account/orders/:id_order",
-                file: "@/components/account/OrderDetails.vue",
+                file: "@/pages/account/OrderDetails.vue",
                 name: "orderDetails"
             },
             {
                 path: "/account/edit",
-                file: "@/components/account/EditAccount.vue",
+                file: "@/pages/account/EditAccount.vue",
                 name: "accountEdit"
             },
         ]
