@@ -6,6 +6,8 @@ import { H3Event } from "h3"
  */
 export default function ForwardCookies(data: any, event: H3Event) {
     const cookies = (data.headers.get('set-cookie') || "")?.split(',')
+    console.log(cookies[0]);
+
     if (event && cookies) {
         for (const cookie of cookies) {
             appendHeader(event, 'set-cookie', cookie)

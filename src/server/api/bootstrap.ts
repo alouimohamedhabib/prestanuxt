@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
             "cookie": prepareCookie(parsedCookies)
         }
     });
-    ForwardCookies(data, event)
+    // ForwardCookies(data, event)
     return {
         _data: data._data
     }
