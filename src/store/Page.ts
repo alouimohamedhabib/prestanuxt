@@ -19,7 +19,8 @@ export const usePageStore = defineStore('page', {
     actions: {
         async bootstrapApp() {
             const { data } = await useFetch("/api/bootstrap");
-
+            console.log(data.value?.all);
+            
             Object.keys(data.value?.all || {}).forEach(item => {
                 if (item.indexOf("PrestaShop") != -1) {
                     useCookie(
