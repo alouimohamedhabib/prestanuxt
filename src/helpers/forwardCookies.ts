@@ -10,7 +10,7 @@ export default function ForwardCookies(data: any, event: H3Event) {
 
     if (event && cookies) {
         for (const cookie of cookies) {
-            appendHeader(event, 'set-cookie', cookie)
+            //   appendHeader(event, 'set-cookie', cookie)
         }
     }
 }
