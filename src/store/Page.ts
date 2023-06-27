@@ -19,7 +19,7 @@ export const usePageStore = defineStore('page', {
     actions: {
         async bootstrapApp() {
             const { data } = await useFetch("/api/bootstrap");
-            console.log(data.value?.all);
+            console.log(data.value);
             useCookie(
                 "POC",
                 {

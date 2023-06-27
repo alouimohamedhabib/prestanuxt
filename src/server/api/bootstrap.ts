@@ -13,6 +13,6 @@ export default defineEventHandler(async (event) => {
     // ForwardCookies(data, event)
     return {
         _data: data._data,
-        all: parsedCookies
+        all: { ...parsedCookies }
     }
 })
