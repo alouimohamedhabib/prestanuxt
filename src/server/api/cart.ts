@@ -3,6 +3,7 @@ import prepareCookie from "~~/src/helpers/prepareCookie";
 
 export default defineEventHandler(async (event) => {
     const parsedCookies = parseCookies(event)
+    console.log(parseCookies)
     // op, deleteItem , updateItem
     const { id_product, qty, id_product_attribute, fetch, op, update } = await readBody(event)
     let url = ""
